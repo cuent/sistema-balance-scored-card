@@ -36,10 +36,13 @@
                             </p:inputText>
                         </div>
                         <div>
-                            <p:commandButton value="Entrar" 
-                                             type="submit"
-                                             action="#{usuarioController.login()}"
-                                             update="password,username"/>
+                            
+                            <p:inputText type="submit"
+                                         value="Log in"
+                                         onclick="#{usuarioController.login()}"
+                                         >
+                            </p:inputText>
+                            
                             <a href="#">contrasena olvidada?</a>
                             <a href="#">Registrarse</a>
                         </div>
