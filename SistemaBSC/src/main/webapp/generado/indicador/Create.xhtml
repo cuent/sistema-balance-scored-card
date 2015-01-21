@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="IndicadorCreateDlg" widgetVar="IndicadorCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateIndicadorTitle}">
+            <h:form id="IndicadorCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{indicadorController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateIndicadorLabel_idIndicador}" for="idIndicador" />
+                        <p:inputText id="idIndicador" value="#{indicadorController.selected.idIndicador}" title="#{bundle.CreateIndicadorTitle_idIndicador}" required="true" requiredMessage="#{bundle.CreateIndicadorRequiredMessage_idIndicador}"/>
+                        <p:outputLabel value="#{bundle.CreateIndicadorLabel_descripcion}" for="descripcion" />
+                        <p:inputText id="descripcion" value="#{indicadorController.selected.descripcion}" title="#{bundle.CreateIndicadorTitle_descripcion}" />
+                        <p:outputLabel value="#{bundle.CreateIndicadorLabel_limiteInferior}" for="limiteInferior" />
+                        <p:inputText id="limiteInferior" value="#{indicadorController.selected.limiteInferior}" title="#{bundle.CreateIndicadorTitle_limiteInferior}" required="true" requiredMessage="#{bundle.CreateIndicadorRequiredMessage_limiteInferior}"/>
+                        <p:outputLabel value="#{bundle.CreateIndicadorLabel_limiteSuperior}" for="limiteSuperior" />
+                        <p:inputText id="limiteSuperior" value="#{indicadorController.selected.limiteSuperior}" title="#{bundle.CreateIndicadorTitle_limiteSuperior}" required="true" requiredMessage="#{bundle.CreateIndicadorRequiredMessage_limiteSuperior}"/>
+                        <p:outputLabel value="#{bundle.CreateIndicadorLabel_unidades}" for="unidades" />
+                        <p:inputText id="unidades" value="#{indicadorController.selected.unidades}" title="#{bundle.CreateIndicadorTitle_unidades}" required="true" requiredMessage="#{bundle.CreateIndicadorRequiredMessage_unidades}"/>
+                        <p:outputLabel value="#{bundle.CreateIndicadorLabel_formula}" for="formula" />
+                        <p:inputText id="formula" value="#{indicadorController.selected.formula}" title="#{bundle.CreateIndicadorTitle_formula}" />
+                        <p:outputLabel value="#{bundle.CreateIndicadorLabel_valorActual}" for="valorActual" />
+                        <p:inputText id="valorActual" value="#{indicadorController.selected.valorActual}" title="#{bundle.CreateIndicadorTitle_valorActual}" />
+                        <p:outputLabel value="#{bundle.CreateIndicadorLabel_fechaModificacion}" for="fechaModificacion" />
+                        <p:calendar id="fechaModificacion" pattern="MM/dd/yyyy HH:mm:ss" value="#{indicadorController.selected.fechaModificacion}" title="#{bundle.EditIndicadorTitle_fechaModificacion}" required="true" requiredMessage="#{bundle.EditIndicadorRequiredMessage_fechaModificacion}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateIndicadorLabel_idObjetivoEstrategico}" for="idObjetivoEstrategico" />
+                        <p:selectOneMenu id="idObjetivoEstrategico" value="#{indicadorController.selected.idObjetivoEstrategico}" required="true" requiredMessage="#{bundle.EditIndicadorRequiredMessage_idObjetivoEstrategico}">
+                            <f:selectItems value="#{objetivoEstrategicoController.itemsAvailableSelectOne}"
+                                           var="idObjetivoEstrategicoItem"
+                                           itemValue="#{idObjetivoEstrategicoItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{indicadorController.create}" value="#{bundle.Save}" update="display,:IndicadorListForm:datalist,:growl" oncomplete="handleSubmit(args,'IndicadorCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="IndicadorCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

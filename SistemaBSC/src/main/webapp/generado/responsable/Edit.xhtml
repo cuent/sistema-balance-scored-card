@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ResponsableEditDlg" widgetVar="ResponsableEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditResponsableTitle}">
+            <h:form id="ResponsableEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{responsableController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditResponsableLabel_responsablePK_idResponsable}" for="responsablePK_idResponsable" />
+                        <p:inputText id="responsablePK_idResponsable" value="#{responsableController.selected.responsablePK.idResponsable}" title="#{bundle.EditResponsableTitle_responsablePK_idResponsable}" required="true" requiredMessage="#{bundle.EditResponsableRequiredMessage_responsablePK_idResponsable}"/>
+                        <p:outputLabel value="#{bundle.EditResponsableLabel_fechaModificacion}" for="fechaModificacion" />
+                        <p:calendar id="fechaModificacion" pattern="MM/dd/yyyy HH:mm:ss" value="#{responsableController.selected.fechaModificacion}" title="#{bundle.EditResponsableTitle_fechaModificacion}" required="true" requiredMessage="#{bundle.EditResponsableRequiredMessage_fechaModificacion}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditResponsableLabel_objetivoEstrategico}" for="objetivoEstrategico" />
+                        <p:selectOneMenu id="objetivoEstrategico" value="#{responsableController.selected.objetivoEstrategico}" required="true" requiredMessage="#{bundle.EditResponsableRequiredMessage_objetivoEstrategico}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{objetivoEstrategicoController.itemsAvailableSelectOne}"
+                                           var="objetivoEstrategicoItem"
+                                           itemValue="#{objetivoEstrategicoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditResponsableLabel_usuario}" for="usuario" />
+                        <p:selectOneMenu id="usuario" value="#{responsableController.selected.usuario}" required="true" requiredMessage="#{bundle.EditResponsableRequiredMessage_usuario}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"
+                                           var="usuarioItem"
+                                           itemValue="#{usuarioItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{responsableController.update}" value="#{bundle.Save}" update="display,:ResponsableListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ResponsableEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ResponsableEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
