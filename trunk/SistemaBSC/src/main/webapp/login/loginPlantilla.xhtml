@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<f:view xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:ui="http://java.sun.com/jsf/facelets">
+    <html>
+        <h:head>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <h:outputStylesheet library="css" name="login.css"/>
+            <h:outputScript library="js" name="pfcrud.js"/>
+            <title>Balanced Score Card</title>
+        </h:head>
+        <h:body>
+            <div class="container">
+                <section id="content">
+                    <form action="">
+                        <h1>Login </h1>
+                        <div>
+
+                            <p:inputText id="username" 
+                                         type="text"
+                                         placeholder="Email o Username"
+                                         value="#{usuarioController.selected.username}" 
+                                         required="true">
+
+                            </p:inputText>
+                        </div>
+                        <div>
+                            <p:inputText id="password" 
+                                         type="password"
+                                         placeholder="Contrasena"
+                                         value="#{usuarioController.selected.contrasena}" 
+                                         required="true">
+                            </p:inputText>
+                        </div>
+                        <div>
+                            <p:commandButton value="Entrar" 
+                                             type="submit"
+                                             action="#{usuarioController.login()}"
+                                             update="password,username"/>
+                            <a href="#">contrasena olvidada?</a>
+                            <a href="#">Registrarse</a>
+                        </div>
+                    </form>
+                    <div class="button">
+                        <a href="#">Registrarse</a>
+                    </div>
+                </section>
+            </div>
+        </h:body>
+    </html>
+</f:view>
+
+<!-- <p:watermark for="username" value="Email o Username"/>-->
