@@ -23,7 +23,9 @@ public class UsuarioController extends AbstractController<Usuario> implements Se
     public void init() {
         super.setFacade(ejbFacade);
     }
-
+    public void login(){
+        System.out.println("si entro...");
+    }
     @Override
     protected void setEmbeddableKeys() {
     }
