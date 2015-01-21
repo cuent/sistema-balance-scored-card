@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ResponsableViewDlg" widgetVar="ResponsableViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewResponsableTitle}">
+            <h:form id="ResponsableViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{responsableController.selected != null}">
+                        <h:outputText value="#{bundle.ViewResponsableLabel_responsablePK_idResponsable}"/>
+                        <h:outputText value="#{responsableController.selected.responsablePK.idResponsable}" title="#{bundle.ViewResponsableTitle_responsablePK_idResponsable}"/>
+                        <h:outputText value="#{bundle.ViewResponsableLabel_fechaModificacion}"/>
+                        <h:outputText value="#{responsableController.selected.fechaModificacion}" title="#{bundle.ViewResponsableTitle_fechaModificacion}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewResponsableLabel_objetivoEstrategico}"/>
+                        <h:outputText value="#{responsableController.selected.objetivoEstrategico}" title="#{bundle.ViewResponsableTitle_objetivoEstrategico}"/>
+                        <h:outputText value="#{bundle.ViewResponsableLabel_usuario}"/>
+                        <h:outputText value="#{responsableController.selected.usuario}" title="#{bundle.ViewResponsableTitle_usuario}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ResponsableViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

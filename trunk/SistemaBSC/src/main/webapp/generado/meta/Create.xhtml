@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MetaCreateDlg" widgetVar="MetaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateMetaTitle}">
+            <h:form id="MetaCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{metaController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateMetaLabel_idMeta}" for="idMeta" />
+                        <p:inputText id="idMeta" value="#{metaController.selected.idMeta}" title="#{bundle.CreateMetaTitle_idMeta}" required="true" requiredMessage="#{bundle.CreateMetaRequiredMessage_idMeta}"/>
+                        <p:outputLabel value="#{bundle.CreateMetaLabel_descripcion}" for="descripcion" />
+                        <p:inputText id="descripcion" value="#{metaController.selected.descripcion}" title="#{bundle.CreateMetaTitle_descripcion}" />
+                        <p:outputLabel value="#{bundle.CreateMetaLabel_fechaModificacion}" for="fechaModificacion" />
+                        <p:calendar id="fechaModificacion" pattern="MM/dd/yyyy HH:mm:ss" value="#{metaController.selected.fechaModificacion}" title="#{bundle.EditMetaTitle_fechaModificacion}" required="true" requiredMessage="#{bundle.EditMetaRequiredMessage_fechaModificacion}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateMetaLabel_idObjetivo}" for="idObjetivo" />
+                        <p:selectOneMenu id="idObjetivo" value="#{metaController.selected.idObjetivo}" required="true" requiredMessage="#{bundle.EditMetaRequiredMessage_idObjetivo}">
+                            <f:selectItems value="#{objetivoEstrategicoController.itemsAvailableSelectOne}"
+                                           var="idObjetivoItem"
+                                           itemValue="#{idObjetivoItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{metaController.create}" value="#{bundle.Save}" update="display,:MetaListForm:datalist,:growl" oncomplete="handleSubmit(args,'MetaCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="MetaCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
