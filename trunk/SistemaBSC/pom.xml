@@ -15,6 +15,11 @@
     </properties>
     
     <dependencies>
+        <dependency>  
+            <groupId>org.primefaces.themes</groupId>  
+            <artifactId>glass-x</artifactId>  
+            <version>1.0.10</version>  
+        </dependency>         
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>eclipselink</artifactId>

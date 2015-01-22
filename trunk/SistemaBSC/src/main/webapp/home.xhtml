@@ -12,12 +12,19 @@
             <h:outputStylesheet name="./css/default.css"/>
             <h:outputStylesheet name="./css/cssLayout.css"/>
             <title>Facelets Template</title>
+            <style>
+                body {
+                    background: #e1c192 url("resources/Image/wood1.jpg");
+                }
+            </style>
         </h:head>
 
         <h:body>
 
             <div id="top">
-                <ui:insert name="top">Top</ui:insert>
+                <center><img src="resources/Image/GoldenBridge.png;" alt="" height="130" width="460"/></center>
+                  
+
             </div>
             <div>
                 <div id="left">
@@ -25,16 +32,32 @@
                         <p:growl autoUpdate="true"/>
                         <p:panelMenu style="width:300px">
                             <p:submenu label="Gestión">
-                                <p:menuitem value="Save" actionListener="#{menuView.save}" icon="ui-icon-disk" />
-                                <p:menuitem value="Update" actionListener="#{menuView.update}"  icon="ui-icon-arrowrefresh-1-w" />
+                                <p:menuitem value="Estrategias Globales" actionListener="#{menuView.save}"  />
+                                <p:menuitem value="Objetivos Estrategicos" actionListener="#{menuView.update}" />
+                                <p:menuitem value="Responsable" actionListener="#{menuView.update}" />
+                                <p:menuitem value="Perspectivas" actionListener="#{menuView.update}" />
+                                <p:menuitem value="Actividades" actionListener="#{menuView.update}" />
+                                <p:menuitem value="Metas" actionListener="#{menuView.update}" />
+                                <p:menuitem value="Indicadores" actionListener="#{menuView.update}" />
+                                <p:menuitem value="Indicador clave de rendimiento (KPI)" actionListener="#{menuView.update}" />
                             </p:submenu>
                             <p:submenu label="Consultas">
-                                <p:menuitem value="Save" actionListener="#{menuView.save}" icon="ui-icon-disk" />
-                                <p:menuitem value="Update" actionListener="#{menuView.update}"  icon="ui-icon-arrowrefresh-1-w" />
+                                <p:menuitem value="Estrategias Globales" actionListener="#{menuView.save}"  />
+                                <p:menuitem value="Objetivos Estrategicos" actionListener="#{menuView.update}" />
+                                <p:menuitem value="Actividades" actionListener="#{menuView.update}" />                                
+                                <p:submenu label="Indicadores">
+                                    <p:menuitem value="General" actionListener="#{menuView.save}" />
+                                    <p:menuitem value="Perspectivas" actionListener="#{menuView.save}" />
+                                    <p:menuitem value="Objetivos" actionListener="#{menuView.save}" />
+                                    <p:menuitem value="Responsable" actionListener="#{menuView.save}" />
+                                    <p:menuitem value="Estado" actionListener="#{menuView.save}" />
+                                    <p:menuitem value="Semáforo" actionListener="#{menuView.save}" />
+                                    <p:menuitem value="Gráficas" actionListener="#{menuView.save}" />
+                                </p:submenu>
+                                <p:menuitem value="Mapa estratégico organizacional" actionListener="#{menuView.save}" />
                             </p:submenu>
-                            <p:submenu label="Ajax Menuitems">
-                                <p:menuitem value="Save" actionListener="#{menuView.save}" icon="ui-icon-disk" />
-                                <p:menuitem value="Update" actionListener="#{menuView.update}"  icon="ui-icon-arrowrefresh-1-w" />
+                            <p:submenu label="Cuadro de Mando Integral">
+                                <p:menuitem value="Matriz General" actionListener="#{menuView.save}" />
                             </p:submenu>
                         </p:panelMenu>
                     </h:form>
