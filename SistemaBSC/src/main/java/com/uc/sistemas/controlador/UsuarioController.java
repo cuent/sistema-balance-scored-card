@@ -141,6 +141,7 @@ public class UsuarioController extends AbstractController<Usuario> implements Se
                     Sistema sistema = new Sistema();
                     sistema.setIdUsuario(user);
                     ejbSistemaFacade.create(sistema);
+                    
                         ConnectUsuario.setUsuario(this.getSelected());
                         ConnectUsuario.setCodigoUsuario(this.getSelected().getIdUsuario());
                         ConnectUsuario.setTipoUsuario(this.getSelected().getTipoUsuario());
