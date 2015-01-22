@@ -24,13 +24,16 @@
                         <p:selectOneMenu id="estrategiaGlobal" value="#{objetivoEstrategicoController.selected.estrategiaGlobal}" required="true" requiredMessage="#{bundle.EditObjetivoEstrategicoRequiredMessage_estrategiaGlobal}">
                             <f:selectItems value="#{estrategiaGlobalController.itemsAvailableSelectOne}"
                                            var="estrategiaGlobalItem"
-                                           itemValue="#{estrategiaGlobalItem}"/>
+                                           itemValue="#{estrategiaGlobalItem}"
+                                           itemLabel="#{estrategiaGlobalItem.nombre}"/>
+                            <f:converter binding="#{estrategiaGlobalConverter}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreateObjetivoEstrategicoLabel_idPerspectiva}" for="idPerspectiva" />
                         <p:selectOneMenu id="idPerspectiva" value="#{objetivoEstrategicoController.selected.idPerspectiva}" required="true" requiredMessage="#{bundle.EditObjetivoEstrategicoRequiredMessage_idPerspectiva}">
                             <f:selectItems value="#{perspectivaController.itemsAvailableSelectOne}"
                                            var="idPerspectivaItem"
                                            itemValue="#{idPerspectivaItem}"/>
+                            <f:converter binding="#{perspectivaConverter}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{objetivoEstrategicoController.create}" value="#{bundle.Save}" update="display,:ObjetivoEstrategicoListForm:datalist,:growl" oncomplete="handleSubmit(args,'ObjetivoEstrategicoCreateDialog');"/>

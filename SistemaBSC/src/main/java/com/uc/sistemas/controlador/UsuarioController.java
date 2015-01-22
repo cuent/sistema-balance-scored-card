@@ -46,7 +46,7 @@ public class UsuarioController extends AbstractController<Usuario> implements Se
                     this.setSelected(user);
                     ConnectUsuario.setUsuario(this.getSelected());
                     // Colocando el tiempo de inactividad que tiene el sistema
-                    Sesion.tiempoInactividad(10000);
+                    Sesion.tiempoInactividad(1000);
                     Sesion.redireccionaPagina("http://localhost:8080/SistemaBSC/faces/index.xhtml");
                 }else{
                     System.out.println("Contra invalida");

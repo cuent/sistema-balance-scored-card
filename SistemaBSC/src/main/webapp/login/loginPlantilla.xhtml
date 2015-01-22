@@ -22,7 +22,8 @@
                             <p:inputText id="username" 
                                          type="text"
                                          placeholder="Email o Username"
-                                         value="#{usuarioController.username}" 
+                                         value="#{usuarioController.username}"
+                                         onkeyup="value = value.toUpperCase()"
                                          required="true">
                             </p:inputText>
                         </div>
