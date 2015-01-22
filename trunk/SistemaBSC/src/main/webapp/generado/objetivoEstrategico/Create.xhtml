@@ -32,7 +32,8 @@
                         <p:selectOneMenu id="idPerspectiva" value="#{objetivoEstrategicoController.selected.idPerspectiva}" required="true" requiredMessage="#{bundle.EditObjetivoEstrategicoRequiredMessage_idPerspectiva}">
                             <f:selectItems value="#{perspectivaController.itemsAvailableSelectOne}"
                                            var="idPerspectivaItem"
-                                           itemValue="#{idPerspectivaItem}"/>
+                                           itemValue="#{idPerspectivaItem}"
+                                           itemLabel="#{idPerspectivaItem.descripcion}"/>
                             <f:converter binding="#{perspectivaConverter}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
