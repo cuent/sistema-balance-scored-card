@@ -47,7 +47,7 @@ public class EstrategiaGlobal implements Serializable {
     private Integer idEstrategiaGlobal;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 64)
+    @Size(min = 1, max = 256)
     @Column(nullable = false, length = 64)
     private String nombre;
     @Basic(optional = false)
