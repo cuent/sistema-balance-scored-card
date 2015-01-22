@@ -15,7 +15,7 @@
         <h:body>
             <div class="container">
                 <section id="content">
-                    <h:form id="formInicioSession">
+                    <h:form >
                         <h1>Login </h1>
                         
                         <div>
@@ -39,6 +39,8 @@
                                          value="Log in"
                                          onclick="#{usuarioController.logear()}"
                                          >
+                                <p:ajax event="blur" 
+                                        update="password,username"/>
                             </p:inputText>
                             
                             <a href="#">contrasena olvidada?</a>

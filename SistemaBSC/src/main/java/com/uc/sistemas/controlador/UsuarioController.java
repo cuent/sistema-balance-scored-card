@@ -3,6 +3,7 @@ package com.uc.sistemas.controlador;
 import com.uc.sistemas.modelo.Usuario;
 import com.uc.sistemas.security.ConnectUsuario;
 import com.uc.sistemas.security.Sesion;
+import java.io.IOException;
 
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
@@ -44,12 +45,17 @@ public class UsuarioController extends AbstractController<Usuario> implements Se
                     System.out.println("Si logeo...");
                     this.setSelected(user);
                     ConnectUsuario.setUsuario(this.getSelected());
+                    // Colocando el tiempo de inactividad que tiene el sistema
+                    Sesion.tiempoInactividad(10000);
+                    Sesion.redireccionaPagina("http://localhost:8080/SistemaBSC/faces/index.xhtml");
                 }else{
                     System.out.println("Contra invalida");
                 }
             } catch (NoSuchAlgorithmException ex) {
                 Logger.getLogger(UsuarioController.class.getName()).log(Level.SEVERE, null, ex);
             } catch (UnsupportedEncodingException ex) {
+                Logger.getLogger(UsuarioController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
                 Logger.getLogger(UsuarioController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }else{
