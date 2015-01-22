@@ -38,4 +38,22 @@ public class UsuarioFacade extends AbstractFacade<Usuario> {
             return null;
         }
     }
+    public Usuario getUsuarioUsername(String username) {
+        Query query = this.em.createNamedQuery(Usuario.findByUsername);
+        query.setParameter("username", username);
+        try{
+            return (Usuario)query.getSingleResult();
+        }catch(NoResultException e){
+            return null;
+        }
+    }
+    public Usuario getUsuarioEmail(String email) {
+        Query query = this.em.createNamedQuery(Usuario.findByEmail);
+        query.setParameter("email", email);
+        try{
+            return (Usuario)query.getSingleResult();
+        }catch(NoResultException e){
+            return null;
+        }
+    }
 }

@@ -36,7 +36,8 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(catalog = "gerenciales", schema = "", uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"USERNAME"})})
+    @UniqueConstraint(columnNames = {"USERNAME"}),
+    @UniqueConstraint(columnNames = {"EMAIL"})})
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u"),
@@ -54,6 +55,8 @@ import javax.xml.bind.annotation.XmlTransient;
 public class Usuario implements Serializable {
     private static final long serialVersionUID = 1L;
     public static final String findByUsernameEmail ="Usuario.findByUsernameEmail";
+    public static final String findByEmail ="Usuario.findByEmail";
+    public static final String findByUsername ="Usuario.findByUsername";
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
