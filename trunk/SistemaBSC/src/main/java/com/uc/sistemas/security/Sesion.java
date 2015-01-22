@@ -74,7 +74,7 @@ public class Sesion {
                 //new ActivacionUsuarioMKP().limpiaActivacion();
                 sesion.invalidate();
             }
-            String url = ResourceBundle.getBundle("/BundleObjetosES").getString("index");
+            String url = "http://localhost:8080/SistemaBSC/faces/login/loginPlantilla.xhtml";
             FacesContext.getCurrentInstance().getExternalContext().redirect(url);
         } catch (IOException ex) {
             Logger.getLogger(Sesion.class.getName()).log(Level.SEVERE, null, ex);
