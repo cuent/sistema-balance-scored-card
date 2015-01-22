@@ -8,7 +8,9 @@ package com.uc.sistemas.facade;
 import com.uc.sistemas.modelo.Usuario;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -27,5 +29,13 @@ public class UsuarioFacade extends AbstractFacade<Usuario> {
     public UsuarioFacade() {
         super(Usuario.class);
     }
-    
+    public Usuario getUsuario(String username) {
+        Query query = this.em.createNamedQuery(Usuario.findByUsernameEmail);
+        query.setParameter("username", username);
+        try{
+            return (Usuario)query.getSingleResult();
+        }catch(NoResultException e){
+            return null;
+        }
+    }
 }

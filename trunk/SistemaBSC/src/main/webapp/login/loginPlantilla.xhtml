@@ -9,44 +9,42 @@
         <h:head>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
             <h:outputStylesheet library="css" name="login.css"/>
-            <h:outputScript library="js" name="pfcrud.js"/>
+            <h:outputScript library="js" name="jsfcrud.js"/>
             <title>Balanced Score Card</title>
         </h:head>
         <h:body>
             <div class="container">
                 <section id="content">
-                    <form action="">
+                    <h:form id="formInicioSession">
                         <h1>Login </h1>
+                        
                         <div>
-
                             <p:inputText id="username" 
                                          type="text"
                                          placeholder="Email o Username"
-                                         value="#{usuarioController.selected.username}" 
+                                         value="#{usuarioController.username}" 
                                          required="true">
-
                             </p:inputText>
                         </div>
                         <div>
                             <p:inputText id="password" 
                                          type="password"
                                          placeholder="Contrasena"
-                                         value="#{usuarioController.selected.contrasena}" 
+                                         value="#{usuarioController.contrasena}" 
                                          required="true">
                             </p:inputText>
                         </div>
                         <div>
-                            
                             <p:inputText type="submit"
                                          value="Log in"
-                                         onclick="#{usuarioController.login()}"
+                                         onclick="#{usuarioController.logear()}"
                                          >
                             </p:inputText>
                             
                             <a href="#">contrasena olvidada?</a>
                             <a href="#">Registrarse</a>
                         </div>
-                    </form>
+                    </h:form>
                     <div class="button">
                         <a href="#">Registrarse</a>
                     </div>
