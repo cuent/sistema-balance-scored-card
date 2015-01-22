@@ -19,16 +19,14 @@ img.right {float:right;margin:0 0 0 20px}
 #logo {float:left;width:450px;padding:50px 0 0 30px}
 #logo h1, #logo p {float:left;margin:0;font-family:Arial,Helvetica,sans-serif;color:#fff}
 #logo span {color:#fff}
-#logo h1 {margin:0;padding:0;letter-spacing:-2px;text-transform:lowercase;font-size:48px}
-#logo p {letter-spacing:-1px;text-transform:lowercase;margin:0;padding:18px 0 0 3px;font-size:18px;color:#fff}
+#logo h1 {margin:0;padding:0;letter-spacing:-2px;font-size:40px}
+#logo p {letter-spacing:-1px;margin:0;padding:18px 0 0 0px;font-size:18px;color:#fff}
 #logo a {border:none;text-decoration:none;color:#fff}
 /* Menu */
 #menu {float:right;width:500px;height:40px}
-#menu ul {float:right;margin:0 30px 0 0;padding:74px 0 0 0;list-style:none}
-#menu li {float:left;display:inline}
-#menu a {display:block;height:30px;margin:0 1px 0 0;padding:10px 20px 0 20px;background:url(images/img06.jpg) repeat-x left top;text-decoration:none;text-transform:lowercase;font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:bold;color:#BFB28D}
-#menu a:hover {color:#fff}
-#menu .current_page_item a {color:#fff}
+#menu ul {float:left;margin:0 0px 0 0;padding:32px 0 0 0;list-style:none}
+#menu a {display:block;height:30px;margin:0 1px 0 0;padding:10px 20px 0 20px;background:url(images/img06.jpg) repeat-x left top;text-decoration:none;font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:bold;color:#BFB28D}
+
 /* Wrapper */
 #wrapper {width:100%;margin:0;padding:0}
 /* Page */
@@ -39,7 +37,7 @@ img.right {float:right;margin:0 0 0 20px}
 #content {float:left;width:480px;margin:0;padding:20px 10px}
 .post {padding-bottom:15px;line-height:200%;background:url(images/img05.jpg) repeat-x left 22px}
 .post h1 {font-weight:normal}
-.title {margin:0;padding:0;letter-spacing:-2px;text-transform:lowercase;font-size:30px;font-weight:normal}
+.title {margin:0;padding:0;letter-spacing:-2px;font-size:30px;font-weight:normal}
 .title a {border-bottom:none;color:#2F2A1D}
 .byline {margin:-4px 0 20px 0;padding:20px 20px 0 20px;font-family:Arial,Helvetica,sans-serif;font-size:11px}
 .byline a {color:#666}
@@ -56,7 +54,7 @@ img.right {float:right;margin:0 0 0 20px}
 .sidebar li {background:url(images/img05.jpg) repeat-x left top}
 .sidebar li ul {background:none;margin-bottom:40px}
 .sidebar li li {line-height:220%;padding:0 16px 0 16px;background:none}
-.sidebar li h2 {height:32px;padding:8px 0 0 15px;background:url(images/img04.jpg) no-repeat left top;letter-spacing:-1px;text-transform:lowercase;font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:normal;color:#fff}
+.sidebar li h2 {height:32px;padding:8px 0 0 15px;background:url(images/img04.jpg) no-repeat left top;letter-spacing:-1px;font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:normal;color:#fff}
 .sidebar h2 a {}
 .sidebar a {color:#2F2A1D}
 /* Search */
