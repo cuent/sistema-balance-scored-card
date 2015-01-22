@@ -74,6 +74,7 @@ public class UsuarioController extends AbstractController<Usuario> implements Se
             confirmaContrasena = null;
         }
     }
+
     public void validarConfirmacionContrasena() {
         if (contrasena != null) {
             if (confirmaContrasena != null) {
@@ -91,6 +92,7 @@ public class UsuarioController extends AbstractController<Usuario> implements Se
             confirmaContrasena = null;
         }
     }
+
     public void cifrarContrasena() {
         if (contrasena != null) {
             try {
@@ -105,17 +107,23 @@ public class UsuarioController extends AbstractController<Usuario> implements Se
             System.out.println("Ingrese una contrasena");
         }
     }
-    public void guardar(){
-        if(     this.getSelected()!=null &&
-                this.getSelected().getNombres()!=null &&
-                this.getSelected().getApellidos()!=null &&
-                this.getSelected().getUsername()!=null &&
-                this.getSelected().getEmail()!=null &&
-                this.getSelected().getContrasena()!=null &&
-                this.getSelected().getTipoUsuario()!=null){
-            this.create();
+
+    public void guardar() {
+        if (ConnectUsuario.getTipoUsuario() == 'A') {
+            if (this.getSelected() != null
+                    && this.getSelected().getNombres() != null
+                    && this.getSelected().getApellidos() != null
+                    && this.getSelected().getUsername() != null
+                    && this.getSelected().getEmail() != null
+                    && this.getSelected().getContrasena() != null
+                    && this.getSelected().getTipoUsuario() != null) {
+                this.create();
+            }
+        } else {
+            System.out.println("No tiene los permisos de administrador para registrar nuevo usuario");
         }
     }
+
     public void logear() {
         Usuario user;
         System.out.println("Usuario " + this.getUsername());
@@ -126,6 +134,8 @@ public class UsuarioController extends AbstractController<Usuario> implements Se
                     System.out.println("Si logeo...");
                     this.setSelected(user);
                     ConnectUsuario.setUsuario(this.getSelected());
+                    ConnectUsuario.setCodigoUsuario(this.getSelected().getIdUsuario());
+                    ConnectUsuario.setTipoUsuario(this.getSelected().getTipoUsuario());
                     // Colocando el tiempo de inactividad que tiene el sistema
                     Sesion.tiempoInactividad(1000);
                     Sesion.redireccionaPagina("http://localhost:8080/SistemaBSC/faces/index.xhtml");
@@ -150,10 +160,9 @@ public class UsuarioController extends AbstractController<Usuario> implements Se
 
     @Override
     protected void setEmbeddableKeys() {
-         
+
         this.getSelected().setFechaModificacion(new Date());
 
-        
     }
 
     @Override

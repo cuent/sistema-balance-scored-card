@@ -18,6 +18,9 @@ public class ConnectUsuario {
     public static void setCodigoUsuario(int codigoUsuario) {
         Sesion.setVariable("codigoUsuario", codigoUsuario);
     }
+    public static void setTipoUsuario(char tipo) {
+        Sesion.setVariable("tipo", tipo);
+    }
     public static void setUsuario(Usuario usuario) {
         Sesion.setVariable("usuario", usuario);
     }
@@ -28,6 +31,9 @@ public class ConnectUsuario {
      */
     public static int getCodigoUsuario() {
         return Integer.parseInt((Sesion.getVariable("codigoUsuario") != null) ? Sesion.getVariable("codigoUsuario").toString() : null);
+    }
+    public static char getTipoUsuario() {
+        return ((Sesion.getVariable("tipo") != null) ? (char) Sesion.getVariable("tipo") : 'N');
     }
     public static Usuario getUsuario() {
         return (Usuario) Sesion.getVariable("usuario");
