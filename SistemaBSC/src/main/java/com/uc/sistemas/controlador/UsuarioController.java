@@ -1,5 +1,6 @@
 package com.uc.sistemas.controlador;
 
+import com.uc.sistemas.modelo.Sistema;
 import com.uc.sistemas.modelo.Usuario;
 import com.uc.sistemas.security.ConnectUsuario;
 import com.uc.sistemas.security.Sesion;
@@ -24,6 +25,8 @@ public class UsuarioController extends AbstractController<Usuario> implements Se
 
     @EJB
     private com.uc.sistemas.facade.UsuarioFacade ejbFacade;
+    @EJB
+    private com.uc.sistemas.facade.SistemaFacade ejbSistemaFacade;
     // Usado para el ingreso del username de la venta de logear
     private String username;
     // Usado para el ingreso de la contraseña de la venta de logear
@@ -131,14 +134,22 @@ public class UsuarioController extends AbstractController<Usuario> implements Se
             user = ejbFacade.getUsuario(username);
             try {
                 if (user.getContrasena().equals(Sesion.MD5(contrasena))) {
-                    System.out.println("Si logeo...");
-                    this.setSelected(user);
-                    ConnectUsuario.setUsuario(this.getSelected());
-                    ConnectUsuario.setCodigoUsuario(this.getSelected().getIdUsuario());
-                    ConnectUsuario.setTipoUsuario(this.getSelected().getTipoUsuario());
-                    // Colocando el tiempo de inactividad que tiene el sistema
-                    Sesion.tiempoInactividad(1000);
-                    Sesion.redireccionaPagina("http://localhost:8080/SistemaBSC/faces/index.xhtml");
+                    if (ejbSistemaFacade.getSistema(user.getIdUsuario()) == null) {
+                        System.out.println("Si logeo...");
+                        this.setSelected(user);
+
+                    Sistema sistema = new Sistema();
+                    sistema.setIdUsuario(user);
+                    ejbSistemaFacade.create(sistema);
+                        ConnectUsuario.setUsuario(this.getSelected());
+                        ConnectUsuario.setCodigoUsuario(this.getSelected().getIdUsuario());
+                        ConnectUsuario.setTipoUsuario(this.getSelected().getTipoUsuario());
+                        // Colocando el tiempo de inactividad que tiene el sistema
+                        Sesion.tiempoInactividad(1000);
+                        Sesion.redireccionaPagina("http://localhost:8080/SistemaBSC/faces/index.xhtml");
+                    } else {
+                        System.out.println("Usuario ya se encuentra logeado");
+                    }
                 } else {
                     System.out.println("Contra invalida");
                 }
