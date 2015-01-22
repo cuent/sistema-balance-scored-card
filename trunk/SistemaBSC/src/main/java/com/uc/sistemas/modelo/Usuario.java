@@ -20,6 +20,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -95,6 +96,8 @@ public class Usuario implements Serializable {
     private Set<Responsable> responsableSet;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
     private Set<ResponsableActividad> responsableActividadSet;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "idUsuario")
+    private Sistema sistema;
     @OneToMany(mappedBy = "idAdministrador")
     private Set<Usuario> usuarioSet;
     @JoinColumn(name = "ID_ADMINISTRADOR", referencedColumnName = "ID_USUARIO")
@@ -197,7 +200,13 @@ public class Usuario implements Serializable {
     public void setResponsableActividadSet(Set<ResponsableActividad> responsableActividadSet) {
         this.responsableActividadSet = responsableActividadSet;
     }
+    public Sistema getSistema() {
+        return sistema;
+    }
 
+    public void setSistema(Sistema sistema) {
+        this.sistema = sistema;
+    }
     @XmlTransient
     public Set<Usuario> getUsuarioSet() {
         return usuarioSet;
