@@ -19,7 +19,7 @@ import javax.persistence.Query;
  */
 @Stateless
 public class SistemaFacade extends AbstractFacade<Sistema> {
-    @PersistenceContext(unitName = "com.imsx_sGerenciales_war_1.0-SNAPSHOTPU")
+    @PersistenceContext(unitName = "com.uc.sistemas_SistemaBSC_war_1.0-SNAPSHOTPU")
     private EntityManager em;
 
     @Override
