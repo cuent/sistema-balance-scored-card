@@ -22,7 +22,9 @@
                         <p:selectOneMenu id="idObjetivo" value="#{metaController.selected.idObjetivo}" required="true" requiredMessage="#{bundle.EditMetaRequiredMessage_idObjetivo}">
                             <f:selectItems value="#{objetivoEstrategicoController.itemsAvailableSelectOne}"
                                            var="idObjetivoItem"
-                                           itemValue="#{idObjetivoItem}"/>
+                                           itemValue="#{idObjetivoItem}"
+                                           itemLabel="#{idObjetivoItem.descripcion}"/>
+                            <f:converter binding="#{objetivoEstrategicoConverter}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{metaController.create}" value="#{bundle.Save}" update="display,:MetaListForm:datalist,:growl" oncomplete="handleSubmit(args,'MetaCreateDialog');"/>

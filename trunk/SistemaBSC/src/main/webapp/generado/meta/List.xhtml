@@ -51,7 +51,7 @@
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListMetaTitle_idObjetivo}"/>
                             </f:facet>
-                            <h:outputText value="#{item.idObjetivo}"/>
+                            <h:outputText value="#{item.idObjetivo.descripcion}"/>
                         </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{metaController.prepareCreate}" update=":MetaCreateForm" oncomplete="PF('MetaCreateDialog').show()"/>
