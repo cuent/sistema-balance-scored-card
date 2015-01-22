@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<f:view xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:ui="http://java.sun.com/jsf/facelets">
+    <html>
+        <h:head>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <h:outputStylesheet library="css" name="registro.css"/>
+            <h:outputScript library="js" name="jsfcrud.js"/>
+            <style>
+                body {
+                    background: #e1c192 url("../resources/image/wood.jpg");
+                }
+            </style>
+            <title>Balanced Score Card</title>
+            <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Varela+Round"/>
+
+        </h:head>
+        <h:body>
+                    <div class="container">
+                        <div id="login">
+                            <h2><span class="fontawesome-lock"></span>CUENTA DE REGISTRO</h2>
+                            <h:form >
+                                <fieldset>
+                                    <h:panelGrid columns="2" 
+                                 columnClasses="column1Class, column2Class" 
+                                 >
+                                    <p><label for="nombre">Nombres</label></p>
+                                    <p>
+                                        <p:inputText id="nombre" 
+                                                     type="email"
+                                                     placeholder="Nombres"
+                                                     value="#{usuarioController.selected.nombres}"
+                                                     onkeyup="value = value.toUpperCase()"
+                                                     required="true">
+                                        </p:inputText>
+                                    </p>
+                                    <p><label for="apellido">Apellidos</label></p>
+                                    <p>
+                                        <p:inputText id="apellido" 
+                                                     type="email"
+                                                     placeholder="Apellidos"
+                                                     value="#{usuarioController.selected.apellidos}"
+                                                     onkeyup="value = value.toUpperCase()"
+                                                     required="true">
+                                        </p:inputText>
+                                    </p>
+                                    <p><label for="username">Username:</label></p>
+                                    <p>
+                                        <p:inputText id="username" 
+                                                     type="email"
+                                                     placeholder="Username"
+                                                     value="#{usuarioController.selected.username}"
+                                                     onkeyup="value = value.toUpperCase()"
+                                                     required="true">
+                                            <p:ajax event="blur" 
+                                                    listener="#{usuarioController.validarUsername()}"/>
+                                        </p:inputText>
+                                    </p>
+                                    <p><label for="email">E-mail</label></p>
+                                    <p>
+                                        <p:inputText id="email" 
+                                                     type="email" 
+                                                     placeholder="Email"
+                                                     value="#{usuarioController.selected.email}"
+                                                     required="true">
+                                            <p:ajax event="blur" 
+                                                    listener="#{usuarioController.validarMail()}"/>
+                                        </p:inputText>
+                                    </p>
+                                    <p><label for="password">Password</label></p>
+                                    <p>
+                                        <p:inputText id="password" 
+                                                     type="password"
+                                                     placeholder="Contrasena"
+                                                     value="#{usuarioController.contrasena}" 
+                                                     required="true">
+                                            
+                                            <p:ajax event="blur" 
+                                                    listener="#{usuarioController.validarContrasena()}"/>
+                                        </p:inputText>
+                                    </p>
+                                    <p><label for="repassword">Repassword</label></p>
+                                    <p>
+                                        <p:inputText id="repassword" 
+                                                     type="password"
+                                                     placeholder="Repetir Contrasena"
+                                                     value="#{usuarioController.confirmaContrasena}" 
+                                                     required="true">
+                                            
+                                            <p:ajax event="blur" 
+                                                    listener="#{usuarioController.validarConfirmacionContrasena()}"/>
+                                        </p:inputText>
+                                    </p>
+                                    <p><label for="tipo">Tipo de Usuario</label></p>
+                                    <p>
+
+                                        <p:selectOneMenu id="tipo" 
+                                                         value="#{usuarioController.selected.tipoUsuario}"
+                                                         required="true" >
+                                            <f:selectItem itemLabel="Administrador" itemValue="A" />  
+                                            <f:selectItem itemLabel="Cliente" itemValue="C" /> 
+                                        </p:selectOneMenu>
+                                    </p>
+                                    <p>-----------</p>
+                                    </h:panelGrid>
+                                    <p>
+                                        <p:inputText type="submit"
+                                                     value="Registrar"
+                                                     onclick="#{usuarioController.guardar()}"
+                                                     >
+                                        </p:inputText>
+                                    </p>
+                                    
+                                </fieldset>
+                            </h:form>
+                        </div> <!-- end login -->
+
+                    </div>
+        </h:body>
+    </html>
+</f:view>
+
+<!-- <p:watermark for="username" value="Email o Username"/>-->
