@@ -7,6 +7,7 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
+import java.util.Date;
 
 @Named("estrategiaGlobalController")
 @SessionScoped
@@ -14,13 +15,21 @@ public class EstrategiaGlobalController extends AbstractController<EstrategiaGlo
 
     @EJB
     private com.uc.sistemas.facade.EstrategiaGlobalFacade ejbFacade;
-public EstrategiaGlobalController() {
+
+    public EstrategiaGlobalController() {
         super(EstrategiaGlobal.class);
     }
 
     @PostConstruct
     public void init() {
         super.setFacade(ejbFacade);
+    }
+
+    @Override
+    public void create() {
+        Date d = new Date();
+        this.getSelected().setFechaModificacion(d);
+        super.create(); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
