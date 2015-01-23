@@ -147,12 +147,12 @@ public class UsuarioController extends AbstractController<Usuario> implements Se
                         ConnectUsuario.setTipoUsuario(this.getSelected().getTipoUsuario());
                         // Colocando el tiempo de inactividad que tiene el sistema
                         Sesion.tiempoInactividad(1000);
-                        Sesion.redireccionaPagina("http://localhost:8080/SistemaBSC/faces/index.xhtml");
+                        Sesion.redireccionaPagina("http://localhost:8080/SistemaBSC/faces/home.xhtml");
                     } else {
                         System.out.println("Usuario ya se encuentra logeado");
                     }
                 } else {
-                    System.out.println("Contra invalida");
+                    System.out.println("Contraseña invalida");
                 }
             } catch (NoSuchAlgorithmException ex) {
                 Logger.getLogger(UsuarioController.class.getName()).log(Level.SEVERE, null, ex);
