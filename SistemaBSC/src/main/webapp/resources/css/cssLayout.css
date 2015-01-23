@@ -4,7 +4,7 @@
     alignment-adjust: central;
     background-color: white;
     color: blue;
-    padding: 50px;
+    padding: 5px;
     margin: 0px 0px 5px 0px;
     font-size: 10px;    
 }
@@ -13,7 +13,7 @@
     position: relative;
     background-color: #c2dfef;
     padding: 5px;
-    margin: 700px 0px 0px 0px;
+    margin: 900px 0px 0px 0px;
 }
 
 #left {
@@ -30,9 +30,6 @@
     width: 150px;
 }
 
-#user{
-    text-align: right;
-}
 
 .center_content {
     position: relative;

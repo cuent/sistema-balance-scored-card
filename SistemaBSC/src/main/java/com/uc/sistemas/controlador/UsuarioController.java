@@ -163,7 +163,7 @@ public class UsuarioController extends AbstractController<Usuario> implements Se
                         // Colocando el tiempo de inactividad que tiene el sistema
                         Sesion.tiempoInactividad(1000);
                         Sesion.creaSesion();
-                        Sesion.redireccionaPagina("http://localhost:8080/SistemaBSC/faces/index.xhtml");
+                        Sesion.redireccionaPagina("http://localhost:8080/SistemaBSC/faces/home.xhtml");
                         this.setSelected(new Usuario());
                     } else {
                         System.out.println("Usuario ya se encuentra logeado");
@@ -206,10 +206,10 @@ public class UsuarioController extends AbstractController<Usuario> implements Se
         }
     }
     public void validSesionAdministrador(){
-        System.out.println("Si entro....");
-        if((Sesion.getVariable("usuario") == null) && ConnectUsuario.getTipoUsuario()!='A'){
+        System.out.println("Si entro a validar....");
+        if((Sesion.getVariable("usuario") == null) || ConnectUsuario.getTipoUsuario()!='A'){
             try {
-                Sesion.redireccionaPagina("http://localhost:8080/SistemaBSC/faces/loginPlantilla.xhtml");
+                Sesion.redireccionaPagina("http://localhost:8080/SistemaBSC/faces/home.xhtml");
             } catch (IOException ex) {
                 Logger.getLogger(UsuarioController.class.getName()).log(Level.SEVERE, null, ex);
             }
