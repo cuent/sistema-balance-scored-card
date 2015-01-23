@@ -18,6 +18,7 @@ import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.event.ActionEvent;
+import javax.servlet.ServletException;
 
 @Named("usuarioController")
 @SessionScoped
@@ -125,6 +126,7 @@ public class UsuarioController extends AbstractController<Usuario> implements Se
         } else {
             System.out.println("No tiene los permisos de administrador para registrar nuevo usuario");
         }
+        this.setSelected(new Usuario());
     }
 
     public void logear() {
@@ -138,16 +140,18 @@ public class UsuarioController extends AbstractController<Usuario> implements Se
                         System.out.println("Si logeo...");
                         this.setSelected(user);
 
-//                    Sistema sistema = new Sistema();
-//                    sistema.setIdUsuario(user);
-//                    ejbSistemaFacade.create(sistema);
+                    Sistema sistema = new Sistema();
+                    sistema.setIdUsuario(user);
+                    ejbSistemaFacade.create(sistema);
                     
                         ConnectUsuario.setUsuario(this.getSelected());
                         ConnectUsuario.setCodigoUsuario(this.getSelected().getIdUsuario());
                         ConnectUsuario.setTipoUsuario(this.getSelected().getTipoUsuario());
                         // Colocando el tiempo de inactividad que tiene el sistema
                         Sesion.tiempoInactividad(1000);
-                        Sesion.redireccionaPagina("http://localhost:8080/SistemaBSC/faces/home.xhtml");
+                        Sesion.creaSesion();
+                        Sesion.redireccionaPagina("http://localhost:8080/SistemaBSC/faces/index.xhtml");
+                        this.setSelected(new Usuario());
                     } else {
                         System.out.println("Usuario ya se encuentra logeado");
                     }
@@ -167,7 +171,22 @@ public class UsuarioController extends AbstractController<Usuario> implements Se
     }
 
     public void desLogear() {
-
+        try {
+            Sistema sistema = new Sistema();
+            sistema = ejbSistemaFacade.getSistema(ConnectUsuario.getCodigoUsuario());
+            ejbSistemaFacade.remove(sistema);
+            
+            ConnectUsuario.setUsuario(null);
+            ConnectUsuario.setCodigoUsuario(0);
+            ConnectUsuario.setTipoUsuario('N');
+            Sesion.cerrarSesion();
+            Sesion.redireccionaPagina("http://localhost:8080/SistemaBSC/faces/loginPlantilla.xhtml");
+            
+        } catch (ServletException ex) {
+            Logger.getLogger(UsuarioController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            System.out.println("Redireccion Pagino no vale");
+        }
     }
 
     @Override
