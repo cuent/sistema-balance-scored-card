@@ -1,5 +1,6 @@
 package com.uc.sistemas.controlador;
 
+import com.uc.sistemas.controlador.util.Mensaje;
 import com.uc.sistemas.modelo.Sistema;
 import com.uc.sistemas.modelo.Usuario;
 import com.uc.sistemas.security.ConnectUsuario;
@@ -48,8 +49,10 @@ public class UsuarioController extends AbstractController<Usuario> implements Se
         if (getSelected().getUsername() != null) {
             if (ejbFacade.getUsuarioUsername(getSelected().getUsername()) != null) {
                 System.out.println("Ya existe");
+                Mensaje.addError(" Ya existe");
                 getSelected().setUsername(null);
             } else {
+                Mensaje.addError(" User correcto");
                 System.out.println(" User correcto");
             }
         }
@@ -59,9 +62,11 @@ public class UsuarioController extends AbstractController<Usuario> implements Se
         if (getSelected().getEmail() != null) {
             if (ejbFacade.getUsuarioEmail(getSelected().getEmail()) != null) {
                 System.out.println("Ya existe");
+                Mensaje.addError(" Ya existe");
                 getSelected().setEmail(null);
             } else {
                 System.out.println(" User correcto");
+                Mensaje.addError(" User correcto");
             }
         }
     }
@@ -70,10 +75,13 @@ public class UsuarioController extends AbstractController<Usuario> implements Se
         if (contrasena != null) {
             if (contrasena.length() < 6 || contrasena.length() > 15) {
                 System.out.println("La contrasena debe tener minimo 6 caracteres y maximo 16");
+                Mensaje.addError("La contrasena debe tener minimo 6 caracteres y maximo 16");
                 getSelected().setContrasena(null);
                 contrasena = null;
             } else {
                 System.out.println("Pass correcto");
+                Mensaje.addError("Pass correcto");
+
             }
             confirmaContrasena = null;
         }
@@ -84,13 +92,16 @@ public class UsuarioController extends AbstractController<Usuario> implements Se
             if (confirmaContrasena != null) {
                 if (!contrasena.equals(confirmaContrasena)) {
                     System.out.println("no coinciden las pass");
+                    Mensaje.addError("no coinciden las pass");
                     confirmaContrasena = null;
                 } else {
                     cifrarContrasena();
                     System.out.println("verificacion correcta");
+                    Mensaje.addError("verificacion correcta");
                 }
             } else {
                 System.out.println("Ingrese la confirmacion de contrasena");
+                Mensaje.addError("Ingrese la confirmacion de contrasena");
             }
         } else {
             confirmaContrasena = null;
@@ -109,6 +120,7 @@ public class UsuarioController extends AbstractController<Usuario> implements Se
             }
         } else {
             System.out.println("Ingrese una contrasena");
+            Mensaje.addError("Ingrese una contrasena");
         }
     }
 
@@ -125,6 +137,7 @@ public class UsuarioController extends AbstractController<Usuario> implements Se
             }
         } else {
             System.out.println("No tiene los permisos de administrador para registrar nuevo usuario");
+            Mensaje.addError("No tiene los permisos de administrador para registrar nuevo usuario");
         }
         this.setSelected(new Usuario());
     }
@@ -154,9 +167,11 @@ public class UsuarioController extends AbstractController<Usuario> implements Se
                         this.setSelected(new Usuario());
                     } else {
                         System.out.println("Usuario ya se encuentra logeado");
+                        Mensaje.addError("Usuario ya se encuentra logeado");
                     }
                 } else {
                     System.out.println("Contraseña invalida");
+                    Mensaje.addError("Contraseña invalida");
                 }
             } catch (NoSuchAlgorithmException ex) {
                 Logger.getLogger(UsuarioController.class.getName()).log(Level.SEVERE, null, ex);
@@ -167,6 +182,7 @@ public class UsuarioController extends AbstractController<Usuario> implements Se
             }
         } else {
             System.out.println("No existe usuario");
+            Mensaje.addError("No existe usuario");
         }
     }
 
@@ -186,6 +202,7 @@ public class UsuarioController extends AbstractController<Usuario> implements Se
             Logger.getLogger(UsuarioController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             System.out.println("Redireccion Pagino no vale");
+            Mensaje.addError("Redireccion Pagino no vale");
         }
     }
     public void validSesionAdministrador(){
