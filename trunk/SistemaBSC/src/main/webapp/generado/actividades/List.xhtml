@@ -5,16 +5,17 @@
       
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      >
 
-    <ui:composition template="/template.xhtml">
+    <ui:composition template="/home.xhtml">
 
 
         <ui:define name="title">
             <h:outputText value="#{bundle.ListActividadesTitle}"></h:outputText>
         </ui:define>
 
-        <ui:define name="body">
+        <ui:define name="content">
             <h:form id="ActividadesListForm">
                 <p:panel header="#{bundle.ListActividadesTitle}">
                     <p:dataTable id="datalist" value="#{actividadesController.items}" var="item"

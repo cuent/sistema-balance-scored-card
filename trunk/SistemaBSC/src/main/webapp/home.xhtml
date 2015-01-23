@@ -2,7 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <f:view xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
         xmlns:h="http://java.sun.com/jsf/html"
-        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:f="http://java.sun.com/jsf/core"        
         xmlns:p="http://primefaces.org/ui"
         xmlns:ui="http://java.sun.com/jsf/facelets">
     <html>
@@ -17,13 +17,31 @@
         </h:head>
 
         <h:body>
-
             <div id="top">
-               <!-- <center><img src="resources/image/GoldenBridge.png;" alt="" height="130" width="460"/></center>-->
-                <h:form>
-                    <p:outputLabel id="user"  value="Usuario: #{usuarioController.username}"/>
-                    <p:outputLabel value="Log Out"/>
-                </h:form>
+                <table width="100%">
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <p:outputLabel value="Usuario: #{usuarioController.username}"/><br/>                                                                                     
+                            </td>                                
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><center><img src="resources/image/GoldenBridge.png;" alt="" height="130" width="460"/></center></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+
             </div>
             <div>
                 <div id="left">
@@ -31,18 +49,25 @@
                         <p:menu toggleable="false" style="width:300px">
                             <p:submenu label="Menu">
                                 <p:menuitem value="Inicio" url="home.xhtml" icon="ui-icon-home" />
-                                <p:menuitem value="Logout" actionListener="#{menuView.save}" icon="ui-icon-closethick" />
+                                <p:menuitem value="Registrar Usuario" url="configuraciones/registroUsuario.xhtml" icon="ui-icon-home" />
+                                <p:menuitem value="Logout" actionListener="#{usuarioController.desLogear()}" icon="ui-icon-closethick" />
                             </p:submenu>
                         </p:menu>
 
-                        <p:menu toggleable="true" style="width:300px">
+                        <p:menu toggleable="true" style="width:300px">                            
                             <p:submenu label="Gestión">
-                                <p:menuitem value="Estrategias Globales" url="configuraciones/estrategiaGlobal/Inicio.xhtml" />
-                                <p:menuitem value="Resposanble" url="configuraciones/responsable/Inicio.xhtml" />
+
                                 <p:menuitem value="Actividades" url="configuraciones/estrategiaGlobal/Inicio.xhtml" />
-                                <p:menuitem value="Metas" url="configuraciones/estrategiaGlobal/Inicio.xhtml" />
+                                <p:menuitem value="Conceptualizar" url="configuraciones/estrategiaGlobal/Inicio.xhtml" />
+                                <p:menuitem value="Estrategias Globales" url="configuraciones/estrategiaGlobal/Inicio.xhtml" />
                                 <p:menuitem value="Indicadores" url="configuraciones/estrategiaGlobal/Inicio.xhtml" />
                                 <p:menuitem value="Indicador clave de rendimiento (KPI)" url="configuraciones/estrategiaGlobal/Inicio.xhtml" />
+                                <p:menuitem value="Metas" url="configuraciones/estrategiaGlobal/Inicio.xhtml" />
+                                <p:menuitem value="Objetivo Estratégico" url="configuraciones/estrategiaGlobal/Inicio.xhtml" />
+                                <p:menuitem value="Perspectiva" url="configuraciones/estrategiaGlobal/Inicio.xhtml" />
+                                <p:menuitem value="Resposanble" url="configuraciones/estrategiaGlobal/Inicio.xhtml" />
+                                <p:menuitem value="Resposanble de Actividad" url="configuraciones/estrategiaGlobal/Inicio.xhtml" />
+                                <p:menuitem value="Usuario" url="configuraciones/estrategiaGlobal/Inicio.xhtml" />
                             </p:submenu>
                             <p:submenu label="Consultas">
                                 <p:menuitem value="Estrategias Globales" url="configuraciones/estrategiaGlobal/Inicio.xhtml" />
@@ -65,10 +90,9 @@
                         </p:menu>
                     </h:form>
                 </div>
-                <div id="content" class="left_content">
-                    <ui:insert name="content">Content</ui:insert>
-
-                </div>
+            </div>
+            <div id="content" class="left_content">
+                <ui:insert name="content"/>
             </div>
             <div id="bottom">
                 <ui:insert name="bottom">Bottom</ui:insert>
