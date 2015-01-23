@@ -57,7 +57,7 @@ public class Sesion {
     public static void validaSesion() throws IOException {
         //System.out.println("ActivacionUsuario.isCambiarContrasena() "+ActivacionUsuario.isCambiarContrasena());
         if (Sesion.getVariable("usuario") == null ) {
-            String url = "SistemaBSC/faces/index.xhtml";
+            String url = "http://localhost:8080/SistemaBSC/faces/index.xhtml";
             FacesContext.getCurrentInstance().getExternalContext().redirect(url);
         } 
         else if (Sesion.getVariable("usuario") != null) {
