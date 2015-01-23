@@ -138,9 +138,9 @@ public class UsuarioController extends AbstractController<Usuario> implements Se
                         System.out.println("Si logeo...");
                         this.setSelected(user);
 
-                    Sistema sistema = new Sistema();
-                    sistema.setIdUsuario(user);
-                    ejbSistemaFacade.create(sistema);
+//                    Sistema sistema = new Sistema();
+//                    sistema.setIdUsuario(user);
+//                    ejbSistemaFacade.create(sistema);
                     
                         ConnectUsuario.setUsuario(this.getSelected());
                         ConnectUsuario.setCodigoUsuario(this.getSelected().getIdUsuario());
