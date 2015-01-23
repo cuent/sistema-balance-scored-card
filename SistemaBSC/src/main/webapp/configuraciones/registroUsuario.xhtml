@@ -24,6 +24,7 @@
                         <div id="login">
                             <h2><span class="fontawesome-lock"></span>CUENTA DE REGISTRO</h2>
                             <h:form >
+                                <p:growl id="mensaje" showDetail="true" life="2000"/> 
                                 #{usuarioController.validSesionAdministrador()}
                                 <fieldset>
                                     <h:panelGrid columns="2" 
