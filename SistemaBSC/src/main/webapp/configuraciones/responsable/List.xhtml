@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="ResponsableListForm">
+        <p:panel>
+            <h1 class="close"> Responsable</h1>
+            <br/>
+            <p:dataTable id="datalist" value="#{responsableController.items}" var="item"
+                         selectionMode="single" selection="#{responsableController.selected}"
+                         paginator="true"
+                         rowKey="#{item.responsablePK}"
+                         rows="10"
+                         rowsPerPageTemplate="10,20,30,40,50"
+                         >
+
+                <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.ListResponsableTitle_responsablePK_idResponsable}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.responsablePK.idResponsable}"/>
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.ListResponsableTitle_fechaModificacion}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.fechaModificacion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.ListResponsableTitle_objetivoEstrategico}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.objetivoEstrategico}"/>
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.ListResponsableTitle_usuario}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.usuario}"/>
+                </p:column>
+                <f:facet name="footer">
+                    <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{responsableController.prepareCreate}" update=":ResponsableCreateForm" oncomplete="PF('ResponsableCreateDialog').show()"/>
+                    <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":ResponsableViewForm" oncomplete="PF('ResponsableViewDialog').show()" disabled="#{empty responsableController.selected}"/>
+                    <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":ResponsableEditForm" oncomplete="PF('ResponsableEditDialog').show()" disabled="#{empty responsableController.selected}"/>
+                    <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{responsableController.destroy}" update="datalist" disabled="#{empty responsableController.selected}"/>
+                </f:facet>
+            </p:dataTable>
+        </p:panel>
+    </h:form>
+
+    <ui:include src="Create.xhtml"/>
+    <ui:include src="Edit.xhtml"/>
+    <ui:include src="View.xhtml"/>
+
+</html>
