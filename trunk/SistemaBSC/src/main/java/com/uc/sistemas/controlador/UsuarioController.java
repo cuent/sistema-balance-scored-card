@@ -189,6 +189,7 @@ public class UsuarioController extends AbstractController<Usuario> implements Se
         }
     }
     public void validSesionAdministrador(){
+        System.out.println("Si entro....");
         if((Sesion.getVariable("usuario") == null) && ConnectUsuario.getTipoUsuario()!='A'){
             try {
                 Sesion.redireccionaPagina("http://localhost:8080/SistemaBSC/faces/loginPlantilla.xhtml");
