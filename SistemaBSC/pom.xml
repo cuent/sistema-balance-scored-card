@@ -34,16 +34,15 @@
             <type>jar</type>
         </dependency>
         <dependency>
-            <groupId>org.primefaces.themes</groupId>
-            <artifactId>glass-x</artifactId>
-            <version>1.0.10</version>
-            <type>jar</type>
-        </dependency>
-        <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
             <version>7.0</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>  
+            <groupId>org.primefaces.themes</groupId>  
+            <artifactId>glass-x</artifactId>  
+            <version>1.0.10</version>  
         </dependency>
     </dependencies>
 
@@ -96,5 +95,5 @@
             </plugin>
         </plugins>
     </build>
-
+    
 </project>
