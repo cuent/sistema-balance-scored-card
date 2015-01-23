@@ -188,7 +188,22 @@ public class UsuarioController extends AbstractController<Usuario> implements Se
             System.out.println("Redireccion Pagino no vale");
         }
     }
-
+    public void validSesionAdministrador(){
+        if((Sesion.getVariable("usuario") == null) && ConnectUsuario.getTipoUsuario()!='A'){
+            try {
+                Sesion.redireccionaPagina("http://localhost:8080/SistemaBSC/faces/loginPlantilla.xhtml");
+            } catch (IOException ex) {
+                Logger.getLogger(UsuarioController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+    public void validSesion(){
+        try {
+            Sesion.validaSesion();
+        } catch (IOException ex) {
+            Logger.getLogger(UsuarioController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     @Override
     protected void setEmbeddableKeys() {
 
