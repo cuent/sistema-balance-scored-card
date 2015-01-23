@@ -10,11 +10,9 @@
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
             <h:outputStylesheet name="./css/default.css"/>
             <h:outputStylesheet name="./css/cssLayout.css"/>
-            <title>Facelets Template</title>
+            <title>Inicio</title>
             <style>
-                body {
-                    background: #e1c192 url("resources/image/wood1.jpg");
-                }
+
             </style>
         </h:head>
 
@@ -30,64 +28,41 @@
             <div>
                 <div id="left">
                     <h:form>
-                        <p:growl autoUpdate="true"/>
-                        <p:panelMenu style="width:300px">
+                        <p:menu toggleable="false" style="width:300px">
+                            <p:submenu label="Menu">
+                                <p:menuitem value="Inicio" url="home.xhtml" icon="ui-icon-home" />
+                                <p:menuitem value="Logout" actionListener="#{menuView.save}" icon="ui-icon-closethick" />
+                            </p:submenu>
+                        </p:menu>
+
+                        <p:menu toggleable="true" style="width:300px">
                             <p:submenu label="Gestión">
-                                <p:submenu label="Estrategias Globales">
-                                    <p:menuitem value="Ingresar" actionListener="#{menuView.save}"  />
-                                    <p:menuitem value="Modificar" actionListener="#{menuView.save}"  />
-                                    <p:menuitem value="Eliminar" actionListener="#{menuView.save}"  />
-                                </p:submenu>
-                                <p:submenu label="Resposanble">
-                                    <p:menuitem value="Ingresar" actionListener="#{menuView.save}"  />
-                                    <p:menuitem value="Modificar" actionListener="#{menuView.save}"  />
-                                    <p:menuitem value="Eliminar" actionListener="#{menuView.save}"  />
-                                </p:submenu>
-                                <p:submenu label="Perspectivas">
-                                    <p:menuitem value="Ingresar" actionListener="#{menuView.save}"  />
-                                    <p:menuitem value="Modificar" actionListener="#{menuView.save}"  />
-                                    <p:menuitem value="Eliminar" actionListener="#{menuView.save}"  />
-                                </p:submenu>
-                                <p:submenu label="Actividades">
-                                    <p:menuitem value="Ingresar" actionListener="#{menuView.save}"  />
-                                    <p:menuitem value="Modificar" actionListener="#{menuView.save}"  />
-                                    <p:menuitem value="Eliminar" actionListener="#{menuView.save}"  />
-                                </p:submenu>
-                                <p:submenu label="Metas">
-                                    <p:menuitem value="Ingresar" actionListener="#{menuView.save}"  />
-                                    <p:menuitem value="Modificar" actionListener="#{menuView.save}"  />
-                                    <p:menuitem value="Eliminar" actionListener="#{menuView.save}"  />
-                                </p:submenu>
-                                <p:submenu label="Indicadores">
-                                    <p:menuitem value="Ingresar" actionListener="#{menuView.save}"  />
-                                    <p:menuitem value="Modificar" actionListener="#{menuView.save}"  />
-                                    <p:menuitem value="Eliminar" actionListener="#{menuView.save}"  />
-                                </p:submenu>
-                                <p:submenu label="Indicador clave de rendimiento (KPI)">
-                                    <p:menuitem value="Ingresar" actionListener="#{menuView.save}"  />
-                                    <p:menuitem value="Modificar" actionListener="#{menuView.save}"  />
-                                    <p:menuitem value="Eliminar" actionListener="#{menuView.save}"  />
-                                </p:submenu>
+                                <p:menuitem value="Estrategias Globales" url="configuraciones/estrategiaGlobal/Inicio.xhtml" />
+                                <p:menuitem value="Resposanble" url="configuraciones/estrategiaGlobal/Inicio.xhtml" />
+                                <p:menuitem value="Actividades" url="configuraciones/estrategiaGlobal/Inicio.xhtml" />
+                                <p:menuitem value="Metas" url="configuraciones/estrategiaGlobal/Inicio.xhtml" />
+                                <p:menuitem value="Indicadores" url="configuraciones/estrategiaGlobal/Inicio.xhtml" />
+                                <p:menuitem value="Indicador clave de rendimiento (KPI)" url="configuraciones/estrategiaGlobal/Inicio.xhtml" />
                             </p:submenu>
                             <p:submenu label="Consultas">
-                                <p:menuitem value="Estrategias Globales" actionListener="#{menuView.save}"  />
-                                <p:menuitem value="Objetivos Estrategicos" actionListener="#{menuView.update}" />
-                                <p:menuitem value="Actividades" actionListener="#{menuView.update}" />                                
-                                <p:submenu label="Indicadores">
-                                    <p:menuitem value="General" actionListener="#{menuView.save}" />
-                                    <p:menuitem value="Perspectivas" actionListener="#{menuView.save}" />
-                                    <p:menuitem value="Objetivos" actionListener="#{menuView.save}" />
-                                    <p:menuitem value="Responsable" actionListener="#{menuView.save}" />
-                                    <p:menuitem value="Estado" actionListener="#{menuView.save}" />
-                                    <p:menuitem value="Semáforo" actionListener="#{menuView.save}" />
-                                    <p:menuitem value="Gráficas" actionListener="#{menuView.save}" />
-                                </p:submenu>
+                                <p:menuitem value="Estrategias Globales" url="configuraciones/estrategiaGlobal/Inicio.xhtml" />
+                                <p:menuitem value="Objetivos Estrategicos" url="configuraciones/estrategiaGlobal/Inicio.xhtml" />
+                                <p:menuitem value="Actividades" url="configuraciones/estrategiaGlobal/Inicio.xhtml" />
                                 <p:menuitem value="Mapa estratégico organizacional" actionListener="#{menuView.save}" />
+                            </p:submenu>
+                            <p:submenu label="Consulta Indicadores">
+                                <p:menuitem value="General" actionListener="#{menuView.save}" />
+                                <p:menuitem value="Perspectivas" actionListener="#{menuView.save}" />
+                                <p:menuitem value="Objetivos" actionListener="#{menuView.save}" />
+                                <p:menuitem value="Responsable" actionListener="#{menuView.save}" />
+                                <p:menuitem value="Estado" actionListener="#{menuView.save}" />
+                                <p:menuitem value="Semáforo" actionListener="#{menuView.save}" />
+                                <p:menuitem value="Gráficas" actionListener="#{menuView.save}" />
                             </p:submenu>
                             <p:submenu label="Cuadro de Mando Integral">
                                 <p:menuitem value="Matriz General" actionListener="#{menuView.save}" />
                             </p:submenu>
-                        </p:panelMenu>
+                        </p:menu>
                     </h:form>
                 </div>
                 <div id="content" class="left_content">
