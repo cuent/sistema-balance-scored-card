@@ -21,8 +21,11 @@
         <h:body>
 
             <div id="top">
-                <center><img src="resources/image/GoldenBridge.png;" alt="" height="130" width="460"/></center>
-                  
+               <!-- <center><img src="resources/image/GoldenBridge.png;" alt="" height="130" width="460"/></center>-->
+                <h:form>
+                    <p:outputLabel id="user"  value="Usuario: #{usuarioController.username}"/>
+                    <p:outputLabel value="Log Out"/>
+                </h:form>
             </div>
             <div>
                 <div id="left">
@@ -62,6 +65,7 @@
                 </div>
                 <div id="content" class="left_content">
                     <ui:insert name="content">Content</ui:insert>
+
                 </div>
             </div>
             <div id="bottom">

@@ -3,10 +3,10 @@
     position: relative;
     alignment-adjust: central;
     background-color: white;
-    color: white;
+    color: blue;
     padding: 50px;
     margin: 0px 0px 5px 0px;
-    font-size: 40px;
+    font-size: 10px;    
 }
 
 #bottom {
@@ -28,6 +28,10 @@
     background-color: #ece3a5;
     padding: 5px;
     width: 150px;
+}
+
+#user{
+    text-align: right;
 }
 
 .center_content {
