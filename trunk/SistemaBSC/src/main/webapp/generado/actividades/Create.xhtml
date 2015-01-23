@@ -12,10 +12,18 @@
             <h:form id="ActividadesCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{actividadesController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateActividadesLabel_idActividades}" for="idActividades" />
-                        <p:inputText id="idActividades" value="#{actividadesController.selected.idActividades}" title="#{bundle.CreateActividadesTitle_idActividades}" required="true" requiredMessage="#{bundle.CreateActividadesRequiredMessage_idActividades}"/>
-                        <p:outputLabel value="#{bundle.CreateActividadesLabel_duracion}" for="duracion" />
-                        <p:inputText id="duracion" value="#{actividadesController.selected.duracion}" title="#{bundle.CreateActividadesTitle_duracion}" required="true" requiredMessage="#{bundle.CreateActividadesRequiredMessage_duracion}"/>
+
+                        <p:outputLabel 
+                            value="#{bundle.CreateActividadesLabel_duracion}" 
+                            for="duracion" 
+                            />
+                        <p:inputText 
+                            id="duracion" 
+                            value="#{actividadesController.selected.duracion}" 
+                            title="#{bundle.CreateActividadesTitle_duracion}" 
+                            required="true" 
+                            requiredMessage="#{bundle.CreateActividadesRequiredMessage_duracion}"
+                            />
                         <p:outputLabel value="#{bundle.CreateActividadesLabel_control}" for="control" />
                         <p:inputText id="control" value="#{actividadesController.selected.control}" title="#{bundle.CreateActividadesTitle_control}" />
                         <p:outputLabel value="#{bundle.CreateActividadesLabel_fechaInicio}" for="fechaInicio" />
