@@ -43,6 +43,7 @@ public class UsuarioController extends AbstractController<Usuario> implements Se
     public void init() {
         super.setFacade(ejbFacade);
         this.setSelected(new Usuario());
+        setLoginUsuario(ConnectUsuario.getUsuario());
     }
 
     @Override
@@ -52,8 +53,6 @@ public class UsuarioController extends AbstractController<Usuario> implements Se
         super.create(); //To change body of generated methods, choose Tools | Templates.
     }
 
-    
-    
     public void validarUsername() {
         if (getSelected().getUsername() != null) {
             if (ejbFacade.getUsuarioUsername(getSelected().getUsername()) != null) {
@@ -61,7 +60,7 @@ public class UsuarioController extends AbstractController<Usuario> implements Se
                 Mensaje.addError(" Ya existe");
                 getSelected().setUsername(null);
             } else {
-                Mensaje.addError(" User correcto");
+                Mensaje.addSatisfactorio(" User correcto");
                 System.out.println(" User correcto");
             }
         }
@@ -75,7 +74,7 @@ public class UsuarioController extends AbstractController<Usuario> implements Se
                 getSelected().setEmail(null);
             } else {
                 System.out.println(" User correcto");
-                Mensaje.addError(" User correcto");
+                Mensaje.addSatisfactorio(" User correcto");
             }
         }
     }
@@ -89,7 +88,7 @@ public class UsuarioController extends AbstractController<Usuario> implements Se
                 contrasena = null;
             } else {
                 System.out.println("Pass correcto");
-                Mensaje.addError("Pass correcto");
+                Mensaje.addSatisfactorio("Pass correcto");
 
             }
             confirmaContrasena = null;
@@ -106,7 +105,7 @@ public class UsuarioController extends AbstractController<Usuario> implements Se
                 } else {
                     cifrarContrasena();
                     System.out.println("verificacion correcta");
-                    Mensaje.addError("verificacion correcta");
+                    Mensaje.addSatisfactorio("verificacion correcta");
                 }
             } else {
                 System.out.println("Ingrese la confirmacion de contrasena");
@@ -162,10 +161,10 @@ public class UsuarioController extends AbstractController<Usuario> implements Se
                         System.out.println("Si logeo...");
                         this.setSelected(user);
 
-                    Sistema sistema = new Sistema();
-                    sistema.setIdUsuario(user);
-                    ejbSistemaFacade.create(sistema);
-                    
+                        Sistema sistema = new Sistema();
+                        sistema.setIdUsuario(user);
+                        ejbSistemaFacade.create(sistema);
+
                         ConnectUsuario.setUsuario(this.getSelected());
                         ConnectUsuario.setCodigoUsuario(this.getSelected().getIdUsuario());
                         ConnectUsuario.setTipoUsuario(this.getSelected().getTipoUsuario());
@@ -196,27 +195,30 @@ public class UsuarioController extends AbstractController<Usuario> implements Se
     }
 
     public void desLogear() {
-        try {
-            Sistema sistema = new Sistema();
-            sistema = ejbSistemaFacade.getSistema(ConnectUsuario.getCodigoUsuario());
-            ejbSistemaFacade.remove(sistema);
-            
-            ConnectUsuario.setUsuario(null);
-            ConnectUsuario.setCodigoUsuario(0);
-            ConnectUsuario.setTipoUsuario('N');
-            Sesion.cerrarSesion();
-            Sesion.redireccionaPagina("http://localhost:8080/SistemaBSC/faces/loginPlantilla.xhtml");
-            
-        } catch (ServletException ex) {
-            Logger.getLogger(UsuarioController.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            System.out.println("Redireccion Pagino no vale");
-            Mensaje.addError("Redireccion Pagino no vale");
+        if (ConnectUsuario.getUsuario() != null) {
+            try {
+                Sistema sistema = new Sistema();
+                sistema = ejbSistemaFacade.getSistema(ConnectUsuario.getCodigoUsuario());
+                ejbSistemaFacade.remove(sistema);
+
+                ConnectUsuario.setUsuario(null);
+                ConnectUsuario.setCodigoUsuario(0);
+                ConnectUsuario.setTipoUsuario('N');
+                Sesion.cerrarSesion();
+                Sesion.redireccionaPagina("http://localhost:8080/SistemaBSC/faces/loginPlantilla.xhtml");
+
+            } catch (ServletException ex) {
+                Logger.getLogger(UsuarioController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                System.out.println("Redireccion Pagino no vale");
+                Mensaje.addError("Redireccion Pagino no vale");
+            }
         }
     }
-    public void validSesionAdministrador(){
+
+    public void validSesionAdministrador() {
         System.out.println("Si entro a validar....");
-        if((Sesion.getVariable("usuario") == null) || ConnectUsuario.getTipoUsuario()!='A'){
+        if ((Sesion.getVariable("usuario") == null) || ConnectUsuario.getTipoUsuario() != 'A') {
             try {
                 Sesion.redireccionaPagina("http://localhost:8080/SistemaBSC/faces/home.xhtml");
             } catch (IOException ex) {
@@ -224,13 +226,15 @@ public class UsuarioController extends AbstractController<Usuario> implements Se
             }
         }
     }
-    public void validSesion(){
+
+    public void validSesion() {
         try {
             Sesion.validaSesion();
         } catch (IOException ex) {
             Logger.getLogger(UsuarioController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
     @Override
     protected void setEmbeddableKeys() {
 
@@ -294,5 +298,13 @@ public class UsuarioController extends AbstractController<Usuario> implements Se
      */
     public void setConfirmaContrasena(String confirmaContrasena) {
         this.confirmaContrasena = confirmaContrasena;
+    }
+
+    public Usuario getLoginUsuario() {
+        return ConnectUsuario.getUsuario();
+    }
+
+    public void setLoginUsuario(Usuario loginUsuario) {
+        ConnectUsuario.setUsuario(loginUsuario);
     }
 }
