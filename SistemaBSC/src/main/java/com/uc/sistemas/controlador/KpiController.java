@@ -3,6 +3,7 @@ package com.uc.sistemas.controlador;
 import com.uc.sistemas.modelo.Kpi;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -23,6 +24,15 @@ public class KpiController extends AbstractController<Kpi> implements Serializab
         super.setFacade(ejbFacade);
     }
 
+    @Override
+    public void create() {
+        Date d = new Date();
+        this.getSelected().setFechaModificacion(d);
+        super.create(); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
+    
     @Override
     protected void setEmbeddableKeys() {
     }

@@ -20,8 +20,7 @@
                         <p:inputText id="aclarar" value="#{conceptualizarController.selected.aclarar}" title="#{bundle.CreateConceptualizarTitle_aclarar}" required="true" requiredMessage="#{bundle.CreateConceptualizarRequiredMessage_aclarar}"/>
                         <p:outputLabel value="#{bundle.CreateConceptualizarLabel_conceptualizar}" for="conceptualizar" />
                         <p:inputText id="conceptualizar" value="#{conceptualizarController.selected.conceptualizar}" title="#{bundle.CreateConceptualizarTitle_conceptualizar}" required="true" requiredMessage="#{bundle.CreateConceptualizarRequiredMessage_conceptualizar}"/>
-                        <p:outputLabel value="#{bundle.CreateConceptualizarLabel_fechaModificacion}" for="fechaModificacion" />
-                        <p:calendar id="fechaModificacion" pattern="MM/dd/yyyy HH:mm:ss" value="#{conceptualizarController.selected.fechaModificacion}" title="#{bundle.EditConceptualizarTitle_fechaModificacion}" required="true" requiredMessage="#{bundle.EditConceptualizarRequiredMessage_fechaModificacion}" showOn="button"/>
+                        
                         <p:outputLabel value="#{bundle.CreateConceptualizarLabel_idObjetivoEstrategico}" for="idObjetivoEstrategico" />
                         <p:selectOneMenu id="idObjetivoEstrategico" value="#{conceptualizarController.selected.idObjetivoEstrategico}" required="true" requiredMessage="#{bundle.EditConceptualizarRequiredMessage_idObjetivoEstrategico}">
                             <f:selectItems value="#{objetivoEstrategicoController.itemsAvailableSelectOne}"

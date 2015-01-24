@@ -45,6 +45,15 @@ public class UsuarioController extends AbstractController<Usuario> implements Se
         this.setSelected(new Usuario());
     }
 
+    @Override
+    public void create() {
+        Date d = new Date();
+        this.getSelected().setFechaModificacion(d);
+        super.create(); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
+    
     public void validarUsername() {
         if (getSelected().getUsername() != null) {
             if (ejbFacade.getUsuarioUsername(getSelected().getUsername()) != null) {
