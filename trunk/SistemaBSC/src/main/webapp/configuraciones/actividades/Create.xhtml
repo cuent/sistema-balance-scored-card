@@ -30,8 +30,7 @@
                         <p:calendar id="fechaInicio" pattern="MM/dd/yyyy" value="#{actividadesController.selected.fechaInicio}" title="#{bundle.EditActividadesTitle_fechaInicio}" required="true" requiredMessage="#{bundle.EditActividadesRequiredMessage_fechaInicio}" showOn="button"/>
                         <p:outputLabel value="#{bundle.CreateActividadesLabel_fechaFin}" for="fechaFin" />
                         <p:calendar id="fechaFin" pattern="MM/dd/yyyy" value="#{actividadesController.selected.fechaFin}" title="#{bundle.EditActividadesTitle_fechaFin}" required="true" requiredMessage="#{bundle.EditActividadesRequiredMessage_fechaFin}" showOn="button"/>
-                        <p:outputLabel value="#{bundle.CreateActividadesLabel_fechaModificacion}" for="fechaModificacion" />
-                        <p:calendar id="fechaModificacion" pattern="MM/dd/yyyy HH:mm:ss" value="#{actividadesController.selected.fechaModificacion}" title="#{bundle.EditActividadesTitle_fechaModificacion}" required="true" requiredMessage="#{bundle.EditActividadesRequiredMessage_fechaModificacion}" showOn="button"/>
+                        
                         <p:outputLabel value="#{bundle.CreateActividadesLabel_idObjetivoEstrategico}" for="idObjetivoEstrategico" />
                         <p:selectOneMenu id="idObjetivoEstrategico" value="#{actividadesController.selected.idObjetivoEstrategico}" required="true" requiredMessage="#{bundle.EditActividadesRequiredMessage_idObjetivoEstrategico}">
                             <f:selectItems value="#{objetivoEstrategicoController.itemsAvailableSelectOne}"

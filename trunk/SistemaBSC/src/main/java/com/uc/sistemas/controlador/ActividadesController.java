@@ -3,6 +3,7 @@ package com.uc.sistemas.controlador;
 import com.uc.sistemas.modelo.Actividades;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -17,6 +18,15 @@ public class ActividadesController extends AbstractController<Actividades> imple
 public ActividadesController() {
         super(Actividades.class);
     }
+
+    @Override
+    public void create() {
+        Date d = new Date();
+        this.getSelected().setFechaModificacion(d);
+        super.create(); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
 
     @PostConstruct
     public void init() {
