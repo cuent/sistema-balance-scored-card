@@ -59,7 +59,8 @@
                                                      onkeyup="value = value.toUpperCase()"
                                                      required="true">
                                             <p:ajax event="blur" 
-                                                    listener="#{usuarioController.validarUsername()}"/>
+                                                    listener="#{usuarioController.validarUsername()}"
+                                                    update="mensaje"/>
                                         </p:inputText>
                                     </p>
                                     <p><label for="email">E-mail</label></p>
@@ -70,7 +71,8 @@
                                                      value="#{usuarioController.selected.email}"
                                                      required="true">
                                             <p:ajax event="blur" 
-                                                    listener="#{usuarioController.validarMail()}"/>
+                                                    listener="#{usuarioController.validarMail()}"
+                                                    update="mensaje"/>
                                         </p:inputText>
                                     </p>
                                     <p><label for="password">Password</label></p>
@@ -82,7 +84,8 @@
                                                      required="true">
                                             
                                             <p:ajax event="blur" 
-                                                    listener="#{usuarioController.validarContrasena()}"/>
+                                                    listener="#{usuarioController.validarContrasena()}"
+                                                    update="mensaje"/>
                                         </p:inputText>
                                     </p>
                                     <p><label for="repassword">Repassword</label></p>
@@ -94,7 +97,8 @@
                                                      required="true">
                                             
                                             <p:ajax event="blur" 
-                                                    listener="#{usuarioController.validarConfirmacionContrasena()}"/>
+                                                    listener="#{usuarioController.validarConfirmacionContrasena()}"
+                                                    update="mensaje"/>
                                         </p:inputText>
                                     </p>
                                     <p><label for="tipo">Tipo de Usuario</label></p>
