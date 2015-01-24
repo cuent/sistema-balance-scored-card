@@ -14,8 +14,7 @@
                     <p:panelGrid columns="2" rendered="#{responsableController.selected != null}">
                         <p:outputLabel value="#{bundle.CreateResponsableLabel_responsablePK_idResponsable}" for="responsablePK_idResponsable" />
                         <p:inputText id="responsablePK_idResponsable" value="#{responsableController.selected.responsablePK.idResponsable}" title="#{bundle.CreateResponsableTitle_responsablePK_idResponsable}" required="true" requiredMessage="#{bundle.CreateResponsableRequiredMessage_responsablePK_idResponsable}"/>
-                        <p:outputLabel value="#{bundle.CreateResponsableLabel_fechaModificacion}" for="fechaModificacion" />
-                        <p:calendar id="fechaModificacion" pattern="MM/dd/yyyy HH:mm:ss" value="#{responsableController.selected.fechaModificacion}" title="#{bundle.EditResponsableTitle_fechaModificacion}" required="true" requiredMessage="#{bundle.EditResponsableRequiredMessage_fechaModificacion}" showOn="button"/>
+                        
                         <p:outputLabel value="#{bundle.CreateResponsableLabel_objetivoEstrategico}" for="objetivoEstrategico" />
                         <p:selectOneMenu id="objetivoEstrategico" value="#{responsableController.selected.objetivoEstrategico}" required="true" requiredMessage="#{bundle.EditResponsableRequiredMessage_objetivoEstrategico}">
                             <f:selectItems value="#{objetivoEstrategicoController.itemsAvailableSelectOne}"

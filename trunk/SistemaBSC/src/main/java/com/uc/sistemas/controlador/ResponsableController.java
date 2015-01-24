@@ -3,6 +3,7 @@ package com.uc.sistemas.controlador;
 import com.uc.sistemas.modelo.Responsable;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -24,6 +25,15 @@ public class ResponsableController extends AbstractController<Responsable> imple
         super.setFacade(ejbFacade);
     }
 
+    @Override
+    public void create() {
+        Date d = new Date();
+        this.getSelected().setFechaModificacion(d);
+        super.create(); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
+    
     protected void setEmbeddableKeys() {
         getSelected().getResponsablePK().setIdObjetivo(getSelected().getObjetivoEstrategico().getIdObjetivoEstrategico());
         getSelected().getResponsablePK().setIdUsuario(getSelected().getUsuario().getIdUsuario());

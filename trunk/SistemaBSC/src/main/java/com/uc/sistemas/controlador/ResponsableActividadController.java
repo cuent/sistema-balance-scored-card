@@ -3,6 +3,7 @@ package com.uc.sistemas.controlador;
 import com.uc.sistemas.modelo.ResponsableActividad;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -24,6 +25,15 @@ public class ResponsableActividadController extends AbstractController<Responsab
         super.setFacade(ejbFacade);
     }
 
+    @Override
+    public void create() {
+        Date d = new Date();
+        this.getSelected().setFechaModificacion(d);
+        super.create(); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
+    
     protected void setEmbeddableKeys() {
         getSelected().getResponsableActividadPK().setIdUsuario(getSelected().getUsuario().getIdUsuario());
         getSelected().getResponsableActividadPK().setIdActividad(getSelected().getActividades().getIdActividades());
