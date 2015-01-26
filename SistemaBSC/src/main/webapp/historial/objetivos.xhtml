@@ -1,82 +1,44 @@
-<?xml version='1.0' encoding='UTF-8' ?> 
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<f:view xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
-        xmlns:h="http://java.sun.com/jsf/html"
-        xmlns:f="http://java.sun.com/jsf/core"
-        xmlns:p="http://primefaces.org/ui"
-        xmlns:ui="http://java.sun.com/jsf/facelets">
-    <html>
-        <h:head>
-            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-            <h:outputStylesheet library="css" name="registro.css"/>
-            <h:outputScript library="js" name="jsfcrud.js"/>
-            <style>
-                body {
-                    background: #e1c192 url("../resources/image/wood1.jpg");
-                }
-            </style>
-            <title>Obejetivos</title>
-            <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Varela+Round"/>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
-        </h:head>
-        <h:body>
-            <h:form>     
-                <p:growl id="messages" showDetail="true" />
 
-                <p:toolbar>
-                    <f:facet name="left">
-
-                        <p:commandButton type="button" value="Open" icon="ui-icon-folder-open" action="#{historialController.buscar()}"/>
-
-                        <span class="ui-separator">
-                            <span class="ui-icon ui-icon-grip-dotted-vertical" />
-                        </span>
-
-                        <p:commandButton type="button" title="Save" icon="ui-icon-disk" />
-                        <p:commandButton type="button" title="Print" icon="ui-icon-print" />
-                    </f:facet>
-
-                    <f:facet name="right">
-                        <p:menuButton value="Options">
-                            <p:menuitem value="Save"  update="messages" icon="ui-icon-disk" />
-                            <p:menuitem value="Update"  update="messages" icon="ui-icon-arrowrefresh-1-w" />
-                            <p:menuitem value="Delete" ajax="false" icon="ui-icon-close" />
-                            <p:menuitem value="Homepage" url="http://localhost:8080/SistemaBSC/faces/home.xhtml" icon="ui-icon-extlink" />
-                        </p:menuButton>
-                    </f:facet>
-
-                </p:toolbar>
-            </h:form>
-            <h:form>
-                <p:dataTable id="datalist" value="#{historialController.fechas}" var="item"
-                             selectionMode="single" selection="#{historialController.fechaSeleccionada}"
-                             paginator="true"
-                             rowKey="#{item.fechaModificacion}"
-                             rows="10"
-                             rowsPerPageTemplate="10,20"
-                             >
-                    <p:column sortBy="#{item.fechaModificacion}">
-                        <f:facet name="header">
-                            <h:outputText value="Fechas de Modificacion"/>
-                        </f:facet>
-                        <h:outputText value="#{item.fechaModificacion}">
-                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
-                        </h:outputText>
-                    </p:column>
-                    <p:column filterBy="#{item.clase}">
-                        <f:facet name="header">
-                            <h:outputText value="Entidad Modificada"/>
-                        </f:facet>
-                        <h:outputText value="#{item.clase}"/>
-                    </p:column>
-                    <f:facet name="footer">
-                        <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}"  oncomplete="PF('ObjetivoEstrategicoViewDialog').show()" disabled="#{empty historialController.selected}"/>
-                    </f:facet>
-                </p:dataTable>
-                <ui:include src="View.xhtml"/>
-            </h:form>
-        </h:body>
-    </html>
-</f:view>
+    <h:form>
+        <p:growl id="messages" showDetail="true" />
+        <p:commandButton type="button" value="Open" icon="ui-icon-folder-open" action="#{historialController.buscar()}"/>
+        <p:commandButton type="button" title="Save" icon="ui-icon-disk" />
+        <p:commandButton type="button" title="Print" icon="ui-icon-print" />
+        <p:dataTable id="datalist" value="#{historialController.fechas}" var="item"
+                     selectionMode="single" selection="#{historialController.fechaSeleccionada}"
+                     paginator="true"
+                     rowKey="#{item.fechaModificacion}"
+                     rows="10"
+                     rowsPerPageTemplate="10,20"
+                     >
+            <p:column sortBy="#{item.fechaModificacion}">
+                <f:facet name="header">
+                    <h:outputText value="Fechas de Modificacion"/>
+                </f:facet>
+                <h:outputText value="#{item.fechaModificacion}">
+                    <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                </h:outputText>
+            </p:column>
+            <p:column filterBy="#{item.clase}">
+                <f:facet name="header">
+                    <h:outputText value="Entidad Modificada"/>
+                </f:facet>
+                <h:outputText value="#{item.clase}"/>
+            </p:column>
+            <f:facet name="footer">
+                <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}"  oncomplete="PF('ObjetivoEstrategicoViewDialog').show()" disabled="#{empty historialController.selected}"/>
+            </f:facet>
+        </p:dataTable>
+        <ui:include src="View.xhtml"/>
+    </h:form>
+</html>
 
 <!-- <p:watermark for="username" value="Email o Username"/>-->
