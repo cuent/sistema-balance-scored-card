@@ -5,8 +5,9 @@
  */
 package com.uc.sistemas.facade;
 
-import com.uc.sistemas.modelo.Conceptualizar;
+import com.uc.sistemas.controlador.util.Historial;
 import com.uc.sistemas.modelo.EstrategiaGlobal;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -33,10 +34,13 @@ public class EstrategiaGlobalFacade extends AbstractFacade<EstrategiaGlobal> {
         super(EstrategiaGlobal.class);
     }
 
-    public List<Date> getItemsFechaModificacion() {
-        Query query = this.em.createNamedQuery(EstrategiaGlobal.FechaModificacion);
-
-        return query.getResultList();
-
+    public List<Historial> getItemsFechaModificacion() {
+        List<EstrategiaGlobal> objetos = new ArrayList<>();
+        objetos.addAll(this.findAll());
+        List<Historial> historial = new ArrayList<>();
+        for (EstrategiaGlobal objeto : objetos) {
+            historial.add(new Historial(objeto.getFechaModificacion(), EstrategiaGlobal.class.getSimpleName(),objeto.getIdEstrategiaGlobal()));
+        }
+        return historial;
     }
 }

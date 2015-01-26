@@ -22,11 +22,11 @@
         <h:body>
             <h:form>     
                 <p:growl id="messages" showDetail="true" />
-                
+
                 <p:toolbar>
                     <f:facet name="left">
 
-                        <p:commandButton type="button" value="Open" icon="ui-icon-folder-open" />
+                        <p:commandButton type="button" value="Open" icon="ui-icon-folder-open" action="#{historialController.buscar()}"/>
 
                         <span class="ui-separator">
                             <span class="ui-icon ui-icon-grip-dotted-vertical" />
@@ -50,19 +50,25 @@
             <h:form>
                 <p:dataTable id="datalist" value="#{historialController.fechas}" var="item"
                              selectionMode="single" selection="#{historialController.fechaSeleccionada}"
-                                 paginator="true"
-                                 rowKey="#{item}"
-                                 rows="10"
-                                 rowsPerPageTemplate="10,20"
-                                 >
-                    <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="Fechas de Modificacion"/>
-                            </f:facet>
-                            <h:outputText value="#{item}">
-                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
-                            </h:outputText>
-                        </p:column>
+                             paginator="true"
+                             rowKey="#{item.fechaModificacion}"
+                             rows="10"
+                             rowsPerPageTemplate="10,20"
+                             >
+                    <p:column sortBy="#{item.fechaModificacion}">
+                        <f:facet name="header">
+                            <h:outputText value="Fechas de Modificacion"/>
+                        </f:facet>
+                        <h:outputText value="#{item.fechaModificacion}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                    </p:column>
+                    <p:column filterBy="#{item.clase}">
+                        <f:facet name="header">
+                            <h:outputText value="Entidad Modificada"/>
+                        </f:facet>
+                        <h:outputText value="#{item.clase}"/>
+                    </p:column>
                 </p:dataTable>
             </h:form>
         </h:body>

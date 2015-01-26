@@ -5,8 +5,9 @@
  */
 package com.uc.sistemas.facade;
 
-import com.uc.sistemas.modelo.Indicador;
+import com.uc.sistemas.controlador.util.Historial;
 import com.uc.sistemas.modelo.Kpi;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -20,6 +21,7 @@ import javax.persistence.Query;
  */
 @Stateless
 public class KpiFacade extends AbstractFacade<Kpi> {
+
     @PersistenceContext(unitName = "com.uc.sistemas_SistemaBSC_war_1.0-SNAPSHOTPU")
     private EntityManager em;
 
@@ -31,10 +33,15 @@ public class KpiFacade extends AbstractFacade<Kpi> {
     public KpiFacade() {
         super(Kpi.class);
     }
-            public List<Date> getItemsFechaModificacion() {
-        Query query = this.em.createNamedQuery(Kpi.FechaModificacion);
 
-        return query.getResultList();
+    public List<Historial> getItemsFechaModificacion() {
+        List<Kpi> objetos = new ArrayList<>();
+        objetos.addAll(this.findAll());
+        List<Historial> historial = new ArrayList<>();
+        for (Kpi objeto : objetos) {
+            historial.add(new Historial(objeto.getFechaModificacion(), Kpi.class.getSimpleName(),objeto.getIdKpi()));
+        }
+        return historial;
 
     }
 }
