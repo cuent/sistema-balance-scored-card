@@ -5,8 +5,9 @@
  */
 package com.uc.sistemas.facade;
 
-import com.uc.sistemas.modelo.Meta;
+import com.uc.sistemas.controlador.util.Historial;
 import com.uc.sistemas.modelo.Responsable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -20,6 +21,7 @@ import javax.persistence.Query;
  */
 @Stateless
 public class ResponsableFacade extends AbstractFacade<Responsable> {
+
     @PersistenceContext(unitName = "com.uc.sistemas_SistemaBSC_war_1.0-SNAPSHOTPU")
     private EntityManager em;
 
@@ -30,11 +32,5 @@ public class ResponsableFacade extends AbstractFacade<Responsable> {
 
     public ResponsableFacade() {
         super(Responsable.class);
-    }
-                   public List<Date> getItemsFechaModificacion() {
-        Query query = this.em.createNamedQuery(Responsable.FechaModificacion);
-
-        return query.getResultList();
-
     }
 }

@@ -5,8 +5,9 @@
  */
 package com.uc.sistemas.facade;
 
-import com.uc.sistemas.modelo.ObjetivoEstrategico;
+import com.uc.sistemas.controlador.util.Historial;
 import com.uc.sistemas.modelo.Perspectiva;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -20,6 +21,7 @@ import javax.persistence.Query;
  */
 @Stateless
 public class PerspectivaFacade extends AbstractFacade<Perspectiva> {
+
     @PersistenceContext(unitName = "com.uc.sistemas_SistemaBSC_war_1.0-SNAPSHOTPU")
     private EntityManager em;
 
@@ -31,10 +33,15 @@ public class PerspectivaFacade extends AbstractFacade<Perspectiva> {
     public PerspectivaFacade() {
         super(Perspectiva.class);
     }
-       public List<Date> getItemsFechaModificacion() {
-        Query query = this.em.createNamedQuery(Perspectiva.FechaModificacion);
-    
-            return query.getResultList();
-        
-    } 
+
+    public List<Historial> getItemsFechaModificacion() {
+        List<Perspectiva> objetos = new ArrayList<>();
+        objetos.addAll(this.findAll());
+        List<Historial> historial = new ArrayList<>();
+        for (Perspectiva objeto : objetos) {
+            historial.add(new Historial(objeto.getFechaModificacion(), Perspectiva.class.getSimpleName(),objeto.getIdPerspectiva()));
+        }
+        return historial;
+
+    }
 }

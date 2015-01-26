@@ -5,8 +5,9 @@
  */
 package com.uc.sistemas.facade;
 
-import com.uc.sistemas.modelo.Actividades;
+import com.uc.sistemas.controlador.util.Historial;
 import com.uc.sistemas.modelo.Conceptualizar;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -20,6 +21,7 @@ import javax.persistence.Query;
  */
 @Stateless
 public class ConceptualizarFacade extends AbstractFacade<Conceptualizar> {
+
     @PersistenceContext(unitName = "com.uc.sistemas_SistemaBSC_war_1.0-SNAPSHOTPU")
     private EntityManager em;
 
@@ -31,10 +33,14 @@ public class ConceptualizarFacade extends AbstractFacade<Conceptualizar> {
     public ConceptualizarFacade() {
         super(Conceptualizar.class);
     }
-            public List<Date> getItemsFechaModificacion() {
-        Query query = this.em.createNamedQuery(Conceptualizar.FechaModificacion);
-    
-            return query.getResultList();
-        
+
+    public List<Historial> getItemsFechaModificacion() {
+        List<Conceptualizar> objetos = new ArrayList<>();
+        objetos.addAll(this.findAll());
+        List<Historial> historial = new ArrayList<>();
+        for (Conceptualizar objeto : objetos) {
+            historial.add(new Historial(objeto.getFechaModificacion(), Conceptualizar.class.getSimpleName(),objeto.getIdConceptualizar()));
+        }
+        return historial;
     }
 }
