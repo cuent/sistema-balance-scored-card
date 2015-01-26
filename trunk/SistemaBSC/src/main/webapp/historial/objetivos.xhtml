@@ -69,7 +69,11 @@
                         </f:facet>
                         <h:outputText value="#{item.clase}"/>
                     </p:column>
+                    <f:facet name="footer">
+                        <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":ObjetivoEstrategicoViewForm" oncomplete="PF('ObjetivoEstrategicoViewDialog').show()" disabled="#{empty objetivoEstrategicoController.selected}"/>
+                    </f:facet>
                 </p:dataTable>
+                <ui:include src="View.xhtml"/>
             </h:form>
         </h:body>
     </html>
