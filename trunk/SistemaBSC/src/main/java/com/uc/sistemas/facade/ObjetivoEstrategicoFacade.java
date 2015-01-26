@@ -6,9 +6,12 @@
 package com.uc.sistemas.facade;
 
 import com.uc.sistemas.modelo.ObjetivoEstrategico;
+import java.util.Date;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -27,5 +30,10 @@ public class ObjetivoEstrategicoFacade extends AbstractFacade<ObjetivoEstrategic
     public ObjetivoEstrategicoFacade() {
         super(ObjetivoEstrategico.class);
     }
+    public List<Date> getItemsFechaModificacion() {
+        Query query = this.em.createNamedQuery(ObjetivoEstrategico.FechaModificacion);
     
+            return query.getResultList();
+        
+    }
 }

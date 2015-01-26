@@ -5,10 +5,14 @@
  */
 package com.uc.sistemas.facade;
 
+import com.uc.sistemas.modelo.Conceptualizar;
 import com.uc.sistemas.modelo.EstrategiaGlobal;
+import java.util.Date;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -16,6 +20,7 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class EstrategiaGlobalFacade extends AbstractFacade<EstrategiaGlobal> {
+
     @PersistenceContext(unitName = "com.uc.sistemas_SistemaBSC_war_1.0-SNAPSHOTPU")
     private EntityManager em;
 
@@ -27,5 +32,11 @@ public class EstrategiaGlobalFacade extends AbstractFacade<EstrategiaGlobal> {
     public EstrategiaGlobalFacade() {
         super(EstrategiaGlobal.class);
     }
-    
+
+    public List<Date> getItemsFechaModificacion() {
+        Query query = this.em.createNamedQuery(EstrategiaGlobal.FechaModificacion);
+
+        return query.getResultList();
+
+    }
 }

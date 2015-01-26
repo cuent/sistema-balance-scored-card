@@ -42,9 +42,12 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Actividades.findByControl", query = "SELECT a FROM Actividades a WHERE a.control = :control"),
     @NamedQuery(name = "Actividades.findByFechaInicio", query = "SELECT a FROM Actividades a WHERE a.fechaInicio = :fechaInicio"),
     @NamedQuery(name = "Actividades.findByFechaFin", query = "SELECT a FROM Actividades a WHERE a.fechaFin = :fechaFin"),
-    @NamedQuery(name = "Actividades.findByFechaModificacion", query = "SELECT a FROM Actividades a WHERE a.fechaModificacion = :fechaModificacion")})
+    @NamedQuery(name = "Actividades.findByFechaModificacion", query = "SELECT a FROM Actividades a WHERE a.fechaModificacion = :fechaModificacion"),
+    
+    @NamedQuery(name = "Actividades.FechaModificacion", query = "SELECT o.fechaModificacion FROM Actividades o")})
 public class Actividades implements Serializable {
     private static final long serialVersionUID = 1L;
+    public static final String FechaModificacion ="Actividades.FechaModificacion";
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)

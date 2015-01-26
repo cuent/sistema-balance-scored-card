@@ -5,10 +5,14 @@
  */
 package com.uc.sistemas.facade;
 
+import com.uc.sistemas.modelo.Actividades;
 import com.uc.sistemas.modelo.Conceptualizar;
+import java.util.Date;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -27,5 +31,10 @@ public class ConceptualizarFacade extends AbstractFacade<Conceptualizar> {
     public ConceptualizarFacade() {
         super(Conceptualizar.class);
     }
+            public List<Date> getItemsFechaModificacion() {
+        Query query = this.em.createNamedQuery(Conceptualizar.FechaModificacion);
     
+            return query.getResultList();
+        
+    }
 }

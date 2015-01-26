@@ -37,9 +37,12 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Perspectiva.findAll", query = "SELECT p FROM Perspectiva p"),
     @NamedQuery(name = "Perspectiva.findByIdPerspectiva", query = "SELECT p FROM Perspectiva p WHERE p.idPerspectiva = :idPerspectiva"),
     @NamedQuery(name = "Perspectiva.findByDescripcion", query = "SELECT p FROM Perspectiva p WHERE p.descripcion = :descripcion"),
-    @NamedQuery(name = "Perspectiva.findByFechaModificacion", query = "SELECT p FROM Perspectiva p WHERE p.fechaModificacion = :fechaModificacion")})
+    @NamedQuery(name = "Perspectiva.findByFechaModificacion", query = "SELECT p FROM Perspectiva p WHERE p.fechaModificacion = :fechaModificacion"),
+    
+    @NamedQuery(name = "Perspectiva.FechaModificacion", query = "SELECT o.fechaModificacion FROM Perspectiva o")})
 public class Perspectiva implements Serializable {
     private static final long serialVersionUID = 1L;
+    public static final String FechaModificacion ="Perspectiva.FechaModificacion";
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)

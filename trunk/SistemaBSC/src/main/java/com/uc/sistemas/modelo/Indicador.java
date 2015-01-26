@@ -40,9 +40,12 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Indicador.findByUnidades", query = "SELECT i FROM Indicador i WHERE i.unidades = :unidades"),
     @NamedQuery(name = "Indicador.findByFormula", query = "SELECT i FROM Indicador i WHERE i.formula = :formula"),
     @NamedQuery(name = "Indicador.findByValorActual", query = "SELECT i FROM Indicador i WHERE i.valorActual = :valorActual"),
-    @NamedQuery(name = "Indicador.findByFechaModificacion", query = "SELECT i FROM Indicador i WHERE i.fechaModificacion = :fechaModificacion")})
+    @NamedQuery(name = "Indicador.findByFechaModificacion", query = "SELECT i FROM Indicador i WHERE i.fechaModificacion = :fechaModificacion"),
+    
+    @NamedQuery(name = "Indicador.FechaModificacion", query = "SELECT o.fechaModificacion FROM Indicador o")})
 public class Indicador implements Serializable {
     private static final long serialVersionUID = 1L;
+    public static final String FechaModificacion ="Indicador.FechaModificacion";
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
