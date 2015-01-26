@@ -11,6 +11,7 @@ import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
+import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -53,6 +54,17 @@ public class UsuarioController extends AbstractController<Usuario> implements Se
         super.create(); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
+    public void destroy() {
+        System.out.println("esta aki");
+        if(!Objects.equals(ConnectUsuario.getUsuario().getIdUsuario(), this.getSelected().getIdUsuario())){
+        super.destroy(); //To change body of generated methods, choose Tools | Templates.
+        }else{
+            Mensaje.addError(" Esta cuenta esta logeado actualemente");
+        }
+    }
+    
+    
     public void validarUsername() {
         if (getSelected().getUsername() != null) {
             if (ejbFacade.getUsuarioUsername(getSelected().getUsername()) != null) {
@@ -65,7 +77,15 @@ public class UsuarioController extends AbstractController<Usuario> implements Se
             }
         }
     }
-
+    public void home(){
+        try {
+            
+            Sesion.redireccionaPagina("http://localhost:8080/SistemaBSC/faces/home.xhtml");
+        } catch (IOException ex) {
+            Logger.getLogger(UsuarioController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
     public void validarMail() {
         if (getSelected().getEmail() != null) {
             if (ejbFacade.getUsuarioEmail(getSelected().getEmail()) != null) {
@@ -133,6 +153,7 @@ public class UsuarioController extends AbstractController<Usuario> implements Se
     }
 
     public void guardar() {
+        boolean dir =false;
         if (ConnectUsuario.getTipoUsuario() == 'A') {
             if (this.getSelected() != null
                     && this.getSelected().getNombres() != null
@@ -142,12 +163,20 @@ public class UsuarioController extends AbstractController<Usuario> implements Se
                     && this.getSelected().getContrasena() != null
                     && this.getSelected().getTipoUsuario() != null) {
                 this.create();
+                dir = true;
             }
         } else {
             System.out.println("No tiene los permisos de administrador para registrar nuevo usuario");
             Mensaje.addError("No tiene los permisos de administrador para registrar nuevo usuario");
         }
         this.setSelected(new Usuario());
+        if(dir ==true){
+            try {
+                Sesion.redireccionaPagina("http://localhost:8080/SistemaBSC/faces/home.xhtml");
+            } catch (IOException ex) {
+                Logger.getLogger(UsuarioController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
 
     public void logear() {
