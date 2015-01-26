@@ -7,6 +7,7 @@ package com.uc.sistemas.modelo;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,12 +18,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -38,11 +41,12 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Conceptualizar.findByAclarar", query = "SELECT c FROM Conceptualizar c WHERE c.aclarar = :aclarar"),
     @NamedQuery(name = "Conceptualizar.findByConceptualizar", query = "SELECT c FROM Conceptualizar c WHERE c.conceptualizar = :conceptualizar"),
     @NamedQuery(name = "Conceptualizar.findByFechaModificacion", query = "SELECT c FROM Conceptualizar c WHERE c.fechaModificacion = :fechaModificacion"),
-    
+
     @NamedQuery(name = "Conceptualizar.FechaModificacion", query = "SELECT o.fechaModificacion FROM Conceptualizar o")})
 public class Conceptualizar implements Serializable {
+
     private static final long serialVersionUID = 1L;
-    public static final String FechaModificacion ="Conceptualizar.FechaModificacion";
+    public static final String FechaModificacion = "Conceptualizar.FechaModificacion";
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
@@ -71,6 +75,10 @@ public class Conceptualizar implements Serializable {
     @JoinColumn(name = "ID_OBJETIVO_ESTRATEGICO", referencedColumnName = "ID_OBJETIVO_ESTRATEGICO", nullable = false)
     @ManyToOne(optional = false)
     private ObjetivoEstrategico idObjetivoEstrategico;
+    @OneToMany(mappedBy = "conceptualizar1")
+    private Set<RelacionObjetivo> relacionObjetivoSet;
+    @OneToMany(mappedBy = "conceptualizar2")
+    private Set<RelacionObjetivo> relacionObjetivoSet1;
 
     public Conceptualizar() {
     }
@@ -135,6 +143,24 @@ public class Conceptualizar implements Serializable {
         this.idObjetivoEstrategico = idObjetivoEstrategico;
     }
 
+    @XmlTransient
+    public Set<RelacionObjetivo> getRelacionObjetivoSet() {
+        return relacionObjetivoSet;
+    }
+
+    public void setRelacionObjetivoSet(Set<RelacionObjetivo> relacionObjetivoSet) {
+        this.relacionObjetivoSet = relacionObjetivoSet;
+    }
+
+    @XmlTransient
+    public Set<RelacionObjetivo> getRelacionObjetivoSet1() {
+        return relacionObjetivoSet1;
+    }
+
+    public void setRelacionObjetivoSet1(Set<RelacionObjetivo> relacionObjetivoSet1) {
+        this.relacionObjetivoSet1 = relacionObjetivoSet1;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -159,5 +185,5 @@ public class Conceptualizar implements Serializable {
     public String toString() {
         return "com.uc.sistemas.modelo.Conceptualizar[ idConceptualizar=" + idConceptualizar + " ]";
     }
-    
+
 }
