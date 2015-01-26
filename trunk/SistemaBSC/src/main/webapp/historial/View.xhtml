@@ -11,7 +11,81 @@
         <p:dialog id="ObjetivoEstrategicoViewDlg" widgetVar="ObjetivoEstrategicoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewObjetivoEstrategicoTitle}">
             <h:form id="ObjetivoEstrategicoViewForm">
                 <h:panelGroup id="display">
-                    <p:panelGrid columns="2" rendered="#{historialController.selected != null}">
+                    <p:panelGrid id="bloque0" columns="1" rendered="#{historialController.selected != null}">
+                        <p:panelGrid id="bloque1" columns="3" >
+                            <h:panelGroup id="perspectiva">
+                                <p:panelGrid id="perspectivaGRID" columns="2" >
+                                    <h:outputText value="Perspectiva:"/>
+                                    <h:outputText value="CLIENTES" title="Perspectiva"/>
+                                    <h:outputText value="Modificacion:"/>
+                                    <h:outputText value="FECHA" title="Modificacion"/>
+                                </p:panelGrid>
+                            </h:panelGroup>
+                            <h:panelGroup id="objetivo">
+                                <p:panelGrid id="objetivoGRID" columns="2" >
+                                    <h:outputText value="Objetivo Estrategico:"/>
+                                    <h:outputText value="-----" title="Objetivo Estrategico"/>
+                                    <h:outputText value="Fecha de Alcance:"/>
+                                    <h:outputText value="-----" title="Fecha de Alcance"/>
+                                </p:panelGrid>
+                            </h:panelGroup>
+                            <h:panelGroup id="estrategia">
+                                <p:panelGrid id="estrategiaGRID" columns="2" >
+                                    <h:outputText value="Estrategia Global:"/>
+                                    <h:outputText value="-----" title="Estrategia Global"/>
+                                    <h:outputText value="Modificacion:"/>
+                                    <h:outputText value="-----" title="Modificacion"/>
+                                </p:panelGrid>
+                            </h:panelGroup>
+                        </p:panelGrid>
+                        <p:panelGrid id="bloque2" columns="1" >
+                            <h:panelGroup id="kpi">
+                                <p:panelGrid id="kpiGRID" columns="5" >
+                                    <h:outputText value="KPI:"/>
+                                    <h:outputText value="Descripcion:"/>
+                                    <h:outputText value="Definir:"/>
+                                    <h:outputText value="Aclarar:"/>
+                                    <h:outputText value="Conceptualizar"/>
+                                    <h:outputText value="-----" title="KPI"/>
+                                    <h:outputText value="-----" title="Descripcion"/>
+                                    <h:outputText value="-----" title="Definir"/>
+                                    <h:outputText value="-----" title="Aclarar"/>
+                                    <h:outputText value="-----" title="Conceptualizar"/>
+                                </p:panelGrid>
+                            </h:panelGroup>
+                        </p:panelGrid>
+                        <p:panelGrid id="bloque3" columns="2" >
+                            <p:panelGrid id="bloque4" columns="1" >
+                                <h:panelGroup id="meta">
+                                    <p:panelGrid id="metaGRID" columns="2" >
+                                        <h:outputText value="META:"/>
+                                        <h:outputText value="-----" title="META"/>
+                                    </p:panelGrid>
+                                </h:panelGroup>
+                                <h:panelGroup id="indicador">
+                                    <p:panelGrid id="indicadorGRID" columns="2" >
+                                        <p:panelGrid id="formula" columns="1" >
+                                            <h:outputText value="Descripcion:"/>
+                                            <h:outputText value="-----" title="META"/>
+                                            <h:outputText value="Formula:"/>
+                                            <h:outputText value="-----" title="META"/>
+                                            <h:outputText value="Valor Actual:"/>
+                                            <h:outputText value="-----" title="META"/>
+                                        </p:panelGrid>
+                                        <p:panelGrid id="rangos" columns="1" >
+                                            <h:outputText value="Minimo:"/>
+                                            <h:outputText value="-----" title="META"/>
+                                            <h:outputText value="Medio:"/>
+                                            <h:outputText value="-----" title="META"/>
+                                            <h:outputText value="Normal:"/>
+                                            <h:outputText value="-----" title="META"/>
+                                        </p:panelGrid>
+                                    </p:panelGrid>
+                                </h:panelGroup>
+                            </p:panelGrid>
+                            <p:panelGrid id="bloque5" columns="1" >
+                            </p:panelGrid>
+                        </p:panelGrid>
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="ObjetivoEstrategicoViewDialog.hide()"/>
                 </h:panelGroup>
