@@ -84,7 +84,14 @@
                                 </h:panelGroup>
                             </p:panelGrid>
                             <p:panelGrid id="bloque5" columns="1" >
-                                
+                                <p:dataTable id="datalist" value="#{usuarioController.items}" var="item" rowKey="#{item.idUsuario}">
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="#{bundle.ListUsuarioTitle_idUsuario}"/>
+                                        </f:facet>
+                    <h:outputText value="#{item.idUsuario}"/>
+                </p:column>
+                                </p:dataTable>
                             </p:panelGrid>
                         </p:panelGrid>
                     </p:panelGrid>

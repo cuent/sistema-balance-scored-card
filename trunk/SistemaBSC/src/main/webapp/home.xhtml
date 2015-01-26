@@ -55,7 +55,7 @@
                         </p:menu>
 
                         <p:menu toggleable="true" style="width:300px">                            
-                            <p:submenu label="Gestión">
+                            <p:submenu label="Gestión" rendered="#{usuarioController.permisos}">
 
                                 <p:menuitem value="Actividades" url="http://localhost:8080/SistemaBSC/faces/configuraciones/actividades/Inicio.xhtml" />
                                 <p:menuitem value="Conceptualizar" url="http://localhost:8080/SistemaBSC/faces/configuraciones/conceptualizar/Inicio.xhtml" />
@@ -85,7 +85,7 @@
                                 <p:menuitem value="Gráficas" actionListener="#{menuView.save}" />
                             </p:submenu>
                             <p:submenu label="Cuadro de Mando Integral">
-                                <p:menuitem value="Matriz General" actionListener="#{menuView.save}" />
+                                <p:menuitem value="Matriz General" url="http://localhost:8080/SistemaBSC/faces/historial/Inicio.xhtml" />
                             </p:submenu>
                         </p:menu>
                     </h:form>

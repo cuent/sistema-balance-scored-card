@@ -77,13 +77,11 @@ public class UsuarioController extends AbstractController<Usuario> implements Se
             }
         }
     }
-    public void home(){
-        try {
-            
-            Sesion.redireccionaPagina("http://localhost:8080/SistemaBSC/faces/home.xhtml");
-        } catch (IOException ex) {
-            Logger.getLogger(UsuarioController.class.getName()).log(Level.SEVERE, null, ex);
+    public boolean permisos(){
+        if(ConnectUsuario.getTipoUsuario()=='A'){
+         return true;
         }
+        return false;
         
     }
     public void validarMail() {
