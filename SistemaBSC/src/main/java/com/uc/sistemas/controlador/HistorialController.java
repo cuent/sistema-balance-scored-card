@@ -81,6 +81,7 @@ public class HistorialController extends AbstractController<ObjetivoEstrategico>
         if (fechaSeleccionada != null && fechaSeleccionada.getFechaModificacion() != null) {
             if (fechaSeleccionada.getClase().equals(ObjetivoEstrategico.class.getSimpleName())) {
                 System.out.println("mirad: " + fechaSeleccionada.getId());
+                this.setSelected(ejbFacade.find(fechaSeleccionada.getId()));
             }
         }
     }
