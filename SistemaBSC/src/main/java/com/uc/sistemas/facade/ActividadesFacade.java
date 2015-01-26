@@ -6,9 +6,13 @@
 package com.uc.sistemas.facade;
 
 import com.uc.sistemas.modelo.Actividades;
+import com.uc.sistemas.modelo.ObjetivoEstrategico;
+import java.util.Date;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -27,5 +31,10 @@ public class ActividadesFacade extends AbstractFacade<Actividades> {
     public ActividadesFacade() {
         super(Actividades.class);
     }
+        public List<Date> getItemsFechaModificacion() {
+        Query query = this.em.createNamedQuery(Actividades.FechaModificacion);
     
+            return query.getResultList();
+        
+    }
 }

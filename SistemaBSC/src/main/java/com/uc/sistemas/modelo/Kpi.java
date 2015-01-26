@@ -36,9 +36,12 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Kpi.findByIdKpi", query = "SELECT k FROM Kpi k WHERE k.idKpi = :idKpi"),
     @NamedQuery(name = "Kpi.findByDescripcion", query = "SELECT k FROM Kpi k WHERE k.descripcion = :descripcion"),
     @NamedQuery(name = "Kpi.findByKpi", query = "SELECT k FROM Kpi k WHERE k.kpi = :kpi"),
-    @NamedQuery(name = "Kpi.findByFechaModificacion", query = "SELECT k FROM Kpi k WHERE k.fechaModificacion = :fechaModificacion")})
+    @NamedQuery(name = "Kpi.findByFechaModificacion", query = "SELECT k FROM Kpi k WHERE k.fechaModificacion = :fechaModificacion"),
+    
+    @NamedQuery(name = "Kpi.FechaModificacion", query = "SELECT o.fechaModificacion FROM Kpi o")})
 public class Kpi implements Serializable {
     private static final long serialVersionUID = 1L;
+    public static final String FechaModificacion ="Kpi.FechaModificacion";
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)

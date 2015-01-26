@@ -37,9 +37,12 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Conceptualizar.findByDefinir", query = "SELECT c FROM Conceptualizar c WHERE c.definir = :definir"),
     @NamedQuery(name = "Conceptualizar.findByAclarar", query = "SELECT c FROM Conceptualizar c WHERE c.aclarar = :aclarar"),
     @NamedQuery(name = "Conceptualizar.findByConceptualizar", query = "SELECT c FROM Conceptualizar c WHERE c.conceptualizar = :conceptualizar"),
-    @NamedQuery(name = "Conceptualizar.findByFechaModificacion", query = "SELECT c FROM Conceptualizar c WHERE c.fechaModificacion = :fechaModificacion")})
+    @NamedQuery(name = "Conceptualizar.findByFechaModificacion", query = "SELECT c FROM Conceptualizar c WHERE c.fechaModificacion = :fechaModificacion"),
+    
+    @NamedQuery(name = "Conceptualizar.FechaModificacion", query = "SELECT o.fechaModificacion FROM Conceptualizar o")})
 public class Conceptualizar implements Serializable {
     private static final long serialVersionUID = 1L;
+    public static final String FechaModificacion ="Conceptualizar.FechaModificacion";
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)

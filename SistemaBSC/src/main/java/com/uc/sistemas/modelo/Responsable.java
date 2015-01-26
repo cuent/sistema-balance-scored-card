@@ -33,9 +33,12 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Responsable.findByIdResponsable", query = "SELECT r FROM Responsable r WHERE r.responsablePK.idResponsable = :idResponsable"),
     @NamedQuery(name = "Responsable.findByIdObjetivo", query = "SELECT r FROM Responsable r WHERE r.responsablePK.idObjetivo = :idObjetivo"),
     @NamedQuery(name = "Responsable.findByIdUsuario", query = "SELECT r FROM Responsable r WHERE r.responsablePK.idUsuario = :idUsuario"),
-    @NamedQuery(name = "Responsable.findByFechaModificacion", query = "SELECT r FROM Responsable r WHERE r.fechaModificacion = :fechaModificacion")})
+    @NamedQuery(name = "Responsable.findByFechaModificacion", query = "SELECT r FROM Responsable r WHERE r.fechaModificacion = :fechaModificacion"),
+    
+    @NamedQuery(name = "Responsable.FechaModificacion", query = "SELECT o.fechaModificacion FROM Responsable o")})
 public class Responsable implements Serializable {
     private static final long serialVersionUID = 1L;
+    public static final String FechaModificacion ="Responsable.FechaModificacion";
     @EmbeddedId
     protected ResponsablePK responsablePK;
     @Basic(optional = false)

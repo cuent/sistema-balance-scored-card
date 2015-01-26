@@ -5,10 +5,14 @@
  */
 package com.uc.sistemas.facade;
 
+import com.uc.sistemas.modelo.ObjetivoEstrategico;
 import com.uc.sistemas.modelo.Perspectiva;
+import java.util.Date;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -27,5 +31,10 @@ public class PerspectivaFacade extends AbstractFacade<Perspectiva> {
     public PerspectivaFacade() {
         super(Perspectiva.class);
     }
+       public List<Date> getItemsFechaModificacion() {
+        Query query = this.em.createNamedQuery(Perspectiva.FechaModificacion);
     
+            return query.getResultList();
+        
+    } 
 }
