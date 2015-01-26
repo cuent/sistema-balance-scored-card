@@ -35,7 +35,9 @@
                         <p:selectOneMenu id="idObjetivoEstrategico" value="#{actividadesController.selected.idObjetivoEstrategico}" required="true" requiredMessage="#{bundle.EditActividadesRequiredMessage_idObjetivoEstrategico}">
                             <f:selectItems value="#{objetivoEstrategicoController.itemsAvailableSelectOne}"
                                            var="idObjetivoEstrategicoItem"
-                                           itemValue="#{idObjetivoEstrategicoItem}"/>
+                                           itemValue="#{idObjetivoEstrategicoItem}"
+                                           itemLabel="#{idObjetivoEstrategicoItem.descripcion}"/>
+                            <f:converter binding="#{objetivoEstrategicoConverter}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{actividadesController.create}" value="#{bundle.Save}" update="display,:ActividadesListForm:datalist" oncomplete="handleSubmit(args,'ActividadesCreateDialog');"/>
