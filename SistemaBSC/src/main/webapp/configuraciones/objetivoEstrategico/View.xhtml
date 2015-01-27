@@ -25,9 +25,9 @@
                             <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                         </h:outputText>
                         <h:outputText value="#{bundle.ViewObjetivoEstrategicoLabel_estrategiaGlobal}"/>
-                        <h:outputText value="#{objetivoEstrategicoController.selected.estrategiaGlobal}" title="#{bundle.ViewObjetivoEstrategicoTitle_estrategiaGlobal}"/>
+                        <h:outputText value="#{objetivoEstrategicoController.selected.estrategiaGlobal.nombre}" title="#{bundle.ViewObjetivoEstrategicoTitle_estrategiaGlobal}"/>
                         <h:outputText value="#{bundle.ViewObjetivoEstrategicoLabel_idPerspectiva}"/>
-                        <h:outputText value="#{objetivoEstrategicoController.selected.idPerspectiva}" title="#{bundle.ViewObjetivoEstrategicoTitle_idPerspectiva}"/>
+                        <h:outputText value="#{objetivoEstrategicoController.selected.idPerspectiva.descripcion}" title="#{bundle.ViewObjetivoEstrategicoTitle_idPerspectiva}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="ObjetivoEstrategicoViewDialog.hide()"/>
                 </h:panelGroup>

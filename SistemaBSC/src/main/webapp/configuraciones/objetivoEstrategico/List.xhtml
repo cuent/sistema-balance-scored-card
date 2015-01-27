@@ -54,13 +54,13 @@
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListObjetivoEstrategicoTitle_estrategiaGlobal}"/>
                             </f:facet>
-                            <h:outputText value="#{item.estrategiaGlobal}"/>
+                            <h:outputText value="#{item.estrategiaGlobal.nombre}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListObjetivoEstrategicoTitle_idPerspectiva}"/>
                             </f:facet>
-                            <h:outputText value="#{item.idPerspectiva}"/>
+                            <h:outputText value="#{item.idPerspectiva.descripcion}"/>
                         </p:column>
                         <f:facet name="footer">
                             <p:commandButton  rendered="#{usuarioController.permisos()}" id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{objetivoEstrategicoController.prepareCreate}" update=":ObjetivoEstrategicoCreateForm" oncomplete="PF('ObjetivoEstrategicoCreateDialog').show()"/>

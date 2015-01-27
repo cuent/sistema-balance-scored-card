@@ -31,7 +31,7 @@
                             <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                         </h:outputText>
                         <h:outputText value="#{bundle.ViewIndicadorLabel_idObjetivoEstrategico}"/>
-                        <h:outputText value="#{indicadorController.selected.idObjetivoEstrategico}" title="#{bundle.ViewIndicadorTitle_idObjetivoEstrategico}"/>
+                        <h:outputText value="#{indicadorController.selected.idObjetivoEstrategico.descripcion}" title="#{bundle.ViewIndicadorTitle_idObjetivoEstrategico}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="IndicadorViewDialog.hide()"/>
                 </h:panelGroup>
