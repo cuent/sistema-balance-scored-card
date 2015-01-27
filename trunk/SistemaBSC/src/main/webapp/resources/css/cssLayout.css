@@ -1,26 +1,24 @@
 
 #top {
     position: relative;
-    alignment-adjust: central;
-    background-color: white;
-    color: blue;
+    background-color: #036fab;
+    color: white;
     padding: 5px;
-    margin: 0px 0px 5px 0px;
-    font-size: 10px;    
+    margin: 0px 0px 10px 0px;
 }
 
 #bottom {
     position: relative;
     background-color: #c2dfef;
     padding: 5px;
-    margin: 900px 0px 0px 0px;
+    margin: 10px 0px 0px 0px;
 }
 
 #left {
     float: left;
-    background-color: #FFF;
+    background-color: #ece3a5;
     padding: 5px;
-    width: 307px;
+    width: 150px;
 }
 
 #right {
@@ -29,7 +27,6 @@
     padding: 5px;
     width: 150px;
 }
-
 
 .center_content {
     position: relative;
@@ -40,7 +37,7 @@
 .left_content {
     background-color: #dddddd;
     padding: 5px;
-    margin-left: 320px;
+    margin-left: 170px;
 }
 
 .right_content {
@@ -61,27 +58,4 @@
   text-decoration : underline;
 }
 
-h1.close {
-  font-family: freight-sans-pro, sans-serif;
-  font-weight: 900;
-  background-color: #fff;	
-  color: #004a80;
-  text-shadow:
-    1 14px #808d93,
-    -1px 0 #cdd2d5,
-    -1px 2px #808d93,
-    -2px 1px #cdd2d5,
-    -2px 3px #808d93,
-    -3px 2px #cdd2d5,
-    -3px 4px #808d93,
-    -4px 3px #cdd2d5,
-    -4px 5px #808d93,
-    -5px 4px #cdd2d5,
-    -5px 6px #808d93,
-    -6px 5px #cdd2d5,
-    -6px 7px #808d93,
-    -7px 6px #cdd2d5,
-    -7px 8px #808d93,
-    -8px 7px #cdd2d5;
-  }
 

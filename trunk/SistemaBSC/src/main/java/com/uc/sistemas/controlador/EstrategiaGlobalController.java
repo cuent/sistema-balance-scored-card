@@ -1,6 +1,8 @@
 package com.uc.sistemas.controlador;
 
+import com.uc.sistemas.controlador.util.reportes.GenerarReporte;
 import com.uc.sistemas.modelo.EstrategiaGlobal;
+import com.uc.sistemas.modelo.ObjetivoEstrategico;
 
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
@@ -8,6 +10,7 @@ import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.util.Date;
+import java.util.List;
 
 @Named("estrategiaGlobalController")
 @SessionScoped
@@ -24,7 +27,12 @@ public class EstrategiaGlobalController extends AbstractController<EstrategiaGlo
     public void init() {
         super.setFacade(ejbFacade);
     }
-
+    public void generarInforme(){
+      List<EstrategiaGlobal> listaGlobales = getItems();
+      GenerarReporte generarReporte = new GenerarReporte();
+      generarReporte.EstrategiasGlobales(listaGlobales);
+    
+    }
     @Override
     public void create() {
         Date d = new Date();

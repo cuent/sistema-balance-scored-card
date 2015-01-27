@@ -1,0 +1,40 @@
+digraph g {
+    rankdir=LR;
+    node[shape = rectangle, fontsize=12];
+    fontsize=14;
+    labeljust="l";
+    edge[style=invis, fontsize=12];
+
+    subgraph clusterA {
+	  f1 [label="Nuevos Clientes desde los 5 a�os hasta los 8 a�os",fillcolor="lightblue",style="filled"];
+   	  f2 [label="Evitar rotaci�n del personal",fillcolor="lightblue",style="filled"];
+          f1; f2;
+          label="Finaciera";
+    }
+
+    subgraph clusterB {
+	c1 [label="Incremento de comunicaci�n con la gente",fillcolor="lightblue",style="filled"];
+	c2 [label="Dar a conocer a la instituci�n",fillcolor="lightblue",style="filled"];
+	c3 [label="Implementar cambios para la gesti�n de reservas",fillcolor="lightblue",style="filled"];
+	c1; c2; c3;
+        label="Cliente";
+    }
+    subgraph clusterC {
+        p1 [label="Sistema para el control de Asistencia",fillcolor="lightblue",style="filled"];
+	p2 [label="Emprender estudios avanzados sobre nuevas tecnolog�as ",fillcolor="lightblue",style="filled"];
+	p3 [label="Dar mantenimiento a los equipos audiovisuales.",fillcolor="lightblue",style="filled"];
+	p4 [label="Realizar la elaboraci�n de propagandas publicitarias",fillcolor="lightblue",style="filled"];
+	p1; p2; p3; p4;
+	label="Procesos";
+    }
+    subgraph clusterD {
+        pa1 [label="Sistema para el control de Asistencia",fillcolor="lightblue",style="filled"];
+	pa2 [label="Emprender estudios avanzados sobre nuevas tecnolog�as ",fillcolor="lightblue",style="filled"];
+	pa3 [label="Dar mantenimiento a los equipos audiovisuales.",fillcolor="lightblue",style="filled"];
+	pa4 [label="Realizar la elaboraci�n de propagandas publicitarias",fillcolor="lightblue",style="filled"];
+	pa1; pa2; pa3; pa4;
+	label="Aprendizaje y Crecimiento";
+    }
+	
+	c1 -> f1;  
+}
