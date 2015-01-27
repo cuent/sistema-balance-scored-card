@@ -40,13 +40,13 @@
                     <f:facet name="header">
                         <h:outputText value="#{bundle.ListResponsableActividadTitle_actividades}"/>
                     </f:facet>
-                    <h:outputText value="#{item.actividades}"/>
+                    <h:outputText value="#{item.actividades.control}"/>
                 </p:column>
                 <p:column>
                     <f:facet name="header">
                         <h:outputText value="#{bundle.ListResponsableActividadTitle_usuario}"/>
                     </f:facet>
-                    <h:outputText value="#{item.usuario}"/>
+                    <h:outputText value="#{item.usuario.username}"/>
                 </p:column>
                 <f:facet name="footer">
                     <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{responsableActividadController.prepareCreate}" update=":ResponsableActividadCreateForm" oncomplete="PF('ResponsableActividadCreateDialog').show()"/>

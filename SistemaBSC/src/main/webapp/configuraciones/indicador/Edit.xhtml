@@ -26,14 +26,15 @@
                         <p:inputText id="formula" value="#{indicadorController.selected.formula}" title="#{bundle.EditIndicadorTitle_formula}" />
                         <p:outputLabel value="#{bundle.EditIndicadorLabel_valorActual}" for="valorActual" />
                         <p:inputText id="valorActual" value="#{indicadorController.selected.valorActual}" title="#{bundle.EditIndicadorTitle_valorActual}" />
-                        <p:outputLabel value="#{bundle.EditIndicadorLabel_fechaModificacion}" for="fechaModificacion" />
-                        <p:calendar id="fechaModificacion" pattern="MM/dd/yyyy HH:mm:ss" value="#{indicadorController.selected.fechaModificacion}" title="#{bundle.EditIndicadorTitle_fechaModificacion}" required="true" requiredMessage="#{bundle.EditIndicadorRequiredMessage_fechaModificacion}" showOn="button"/>
+                        
                         <p:outputLabel value="#{bundle.EditIndicadorLabel_idObjetivoEstrategico}" for="idObjetivoEstrategico" />
                         <p:selectOneMenu id="idObjetivoEstrategico" value="#{indicadorController.selected.idObjetivoEstrategico}" required="true" requiredMessage="#{bundle.EditIndicadorRequiredMessage_idObjetivoEstrategico}">
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{objetivoEstrategicoController.itemsAvailableSelectOne}"
                                            var="idObjetivoEstrategicoItem"
-                                           itemValue="#{idObjetivoEstrategicoItem}"/>
+                                           itemValue="#{idObjetivoEstrategicoItem}"
+                                           itemLabel="#{idObjetivoEstrategicoItem.descripcion}"/>
+                            <f:converter binding="#{objetivoEstrategicoConverter}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{indicadorController.update}" value="#{bundle.Save}" update="display,:IndicadorListForm:datalist" oncomplete="handleSubmit(args, 'IndicadorEditDialog');"/>

@@ -31,7 +31,9 @@
                         <p:selectOneMenu id="idAdministrador" value="#{usuarioController.selected.idAdministrador}" >
                             <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"
                                            var="idAdministradorItem"
-                                           itemValue="#{idAdministradorItem}"/>
+                                          itemValue="#{idAdministradorItem}"
+                                           itemLabel="#{idAdministradorItem.username}"/>
+                            <f:converter binding="#{usuarioConverter}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{usuarioController.create}" value="#{bundle.Save}" update="display,:UsuarioListForm:datalist" oncomplete="handleSubmit(args,'UsuarioCreateDialog');"/>

@@ -14,18 +14,22 @@
                     <p:panelGrid columns="2" rendered="#{responsableController.selected != null}">
                         <p:outputLabel value="#{bundle.CreateResponsableLabel_responsablePK_idResponsable}" for="responsablePK_idResponsable" />
                         <p:inputText id="responsablePK_idResponsable" value="#{responsableController.selected.responsablePK.idResponsable}" title="#{bundle.CreateResponsableTitle_responsablePK_idResponsable}" required="true" requiredMessage="#{bundle.CreateResponsableRequiredMessage_responsablePK_idResponsable}"/>
-                        
+
                         <p:outputLabel value="#{bundle.CreateResponsableLabel_objetivoEstrategico}" for="objetivoEstrategico" />
                         <p:selectOneMenu id="objetivoEstrategico" value="#{responsableController.selected.objetivoEstrategico}" required="true" requiredMessage="#{bundle.EditResponsableRequiredMessage_objetivoEstrategico}">
                             <f:selectItems value="#{objetivoEstrategicoController.itemsAvailableSelectOne}"
                                            var="objetivoEstrategicoItem"
-                                           itemValue="#{objetivoEstrategicoItem}"/>
+                                           itemValue="#{objetivoEstrategicoItem}"
+                                           itemLabel="#{objetivoEstrategicoItem.descripcion}"/>
+                            <f:converter binding="#{objetivoEstrategicoConverter}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreateResponsableLabel_usuario}" for="usuario" />
                         <p:selectOneMenu id="usuario" value="#{responsableController.selected.usuario}" required="true" requiredMessage="#{bundle.EditResponsableRequiredMessage_usuario}">
                             <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"
                                            var="usuarioItem"
-                                           itemValue="#{usuarioItem}"/>
+                                           itemValue="#{usuarioItem}"
+                                           itemLabel="#{usuarioItem.username}"/>
+                            <f:converter binding="#{usuarioConverter}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{responsableController.create}" value="#{bundle.Save}" update="display,:ResponsableListForm:datalist" oncomplete="handleSubmit(args,'ResponsableCreateDialog');"/>

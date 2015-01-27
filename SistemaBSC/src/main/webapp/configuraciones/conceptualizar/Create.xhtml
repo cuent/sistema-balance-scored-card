@@ -25,7 +25,9 @@
                         <p:selectOneMenu id="idObjetivoEstrategico" value="#{conceptualizarController.selected.idObjetivoEstrategico}" required="true" requiredMessage="#{bundle.EditConceptualizarRequiredMessage_idObjetivoEstrategico}">
                             <f:selectItems value="#{objetivoEstrategicoController.itemsAvailableSelectOne}"
                                            var="idObjetivoEstrategicoItem"
-                                           itemValue="#{idObjetivoEstrategicoItem}"/>
+                                           itemValue="#{idObjetivoEstrategicoItem}"
+                                           itemLabel="#{idObjetivoEstrategicoItem.descripcion}"/>
+                            <f:converter binding="#{objetivoEstrategicoConverter}"/>>
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{conceptualizarController.create}" value="#{bundle.Save}" update="display,:ConceptualizarListForm:datalist" oncomplete="handleSubmit(args,'ConceptualizarCreateDialog');"/>

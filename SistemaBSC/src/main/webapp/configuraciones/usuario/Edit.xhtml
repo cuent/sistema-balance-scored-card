@@ -26,14 +26,15 @@
                         <p:inputText id="email" value="#{usuarioController.selected.email}" title="#{bundle.EditUsuarioTitle_email}" />
                         <p:outputLabel value="#{bundle.EditUsuarioLabel_tipoUsuario}" for="tipoUsuario" />
                         <p:inputText id="tipoUsuario" value="#{usuarioController.selected.tipoUsuario}" title="#{bundle.EditUsuarioTitle_tipoUsuario}" />
-                        <p:outputLabel value="#{bundle.EditUsuarioLabel_fechaModificacion}" for="fechaModificacion" />
-                        <p:calendar id="fechaModificacion" pattern="MM/dd/yyyy HH:mm:ss" value="#{usuarioController.selected.fechaModificacion}" title="#{bundle.EditUsuarioTitle_fechaModificacion}" required="true" requiredMessage="#{bundle.EditUsuarioRequiredMessage_fechaModificacion}" showOn="button"/>
+                       
                         <p:outputLabel value="#{bundle.EditUsuarioLabel_idAdministrador}" for="idAdministrador" />
                         <p:selectOneMenu id="idAdministrador" value="#{usuarioController.selected.idAdministrador}" >
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"
                                            var="idAdministradorItem"
-                                           itemValue="#{idAdministradorItem}"/>
+                                           itemValue="#{idAdministradorItem}"
+                                           itemLabel="#{idAdministradorItem.username}"/>
+                            <f:converter binding="#{usuarioConverter}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{usuarioController.update}" value="#{bundle.Save}" update="display,:UsuarioListForm:datalist" oncomplete="handleSubmit(args, 'UsuarioEditDialog');"/>
