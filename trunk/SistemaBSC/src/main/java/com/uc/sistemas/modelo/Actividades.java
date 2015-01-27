@@ -61,7 +61,7 @@ public class Actividades implements Serializable {
     @Column(nullable = false)
     private int duracion;
     @Size(max = 64)
-    @Column(length = 64)
+    @Column(length = 256)
     private String control;
     @Basic(optional = false)
     @NotNull
