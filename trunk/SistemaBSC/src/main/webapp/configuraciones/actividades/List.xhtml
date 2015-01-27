@@ -72,16 +72,16 @@
                     <h:outputText value="#{item.idObjetivoEstrategico.descripcion}"/>
                 </p:column>
                 <f:facet name="footer">
-                    <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{actividadesController.prepareCreate}" update=":ActividadesCreateForm" oncomplete="PF('ActividadesCreateDialog').show()"/>
+                    <p:commandButton  rendered="#{usuarioController.permisos()}" id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{actividadesController.prepareCreate}" update=":ActividadesCreateForm" oncomplete="PF('ActividadesCreateDialog').show()"/>
                     <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":ActividadesViewForm" oncomplete="PF('ActividadesViewDialog').show()" disabled="#{empty actividadesController.selected}"/>
-                    <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":ActividadesEditForm" oncomplete="PF('ActividadesEditDialog').show()" disabled="#{empty actividadesController.selected}"/>
-                    <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{actividadesController.destroy}" update="datalist" disabled="#{empty actividadesController.selected}"/>
+                    <p:commandButton  rendered="#{usuarioController.permisos()}" id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":ActividadesEditForm" oncomplete="PF('ActividadesEditDialog').show()" disabled="#{empty actividadesController.selected}"/>
+                    <p:commandButton  rendered="#{usuarioController.permisos()}" id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{actividadesController.destroy}" update="datalist" disabled="#{empty actividadesController.selected}"/>
                 </f:facet>
             </p:dataTable>
         </p:panel>
     </h:form>
 
-    <ui:include src="Create.xhtml"/>
+    <ui:include src="Create.xhtml" />
     <ui:include src="Edit.xhtml"/>
     <ui:include src="View.xhtml"/>
 
