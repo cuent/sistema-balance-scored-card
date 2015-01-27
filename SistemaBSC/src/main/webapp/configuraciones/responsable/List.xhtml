@@ -48,10 +48,10 @@
                     <h:outputText value="#{item.usuario.username}"/>
                 </p:column>
                 <f:facet name="footer">
-                    <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{responsableController.prepareCreate}" update=":ResponsableCreateForm" oncomplete="PF('ResponsableCreateDialog').show()"/>
+                    <p:commandButton  rendered="#{usuarioController.permisos()}" id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{responsableController.prepareCreate}" update=":ResponsableCreateForm" oncomplete="PF('ResponsableCreateDialog').show()"/>
                     <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":ResponsableViewForm" oncomplete="PF('ResponsableViewDialog').show()" disabled="#{empty responsableController.selected}"/>
-                    <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":ResponsableEditForm" oncomplete="PF('ResponsableEditDialog').show()" disabled="#{empty responsableController.selected}"/>
-                    <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{responsableController.destroy}" update="datalist" disabled="#{empty responsableController.selected}"/>
+                    <p:commandButton  rendered="#{usuarioController.permisos()}" id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":ResponsableEditForm" oncomplete="PF('ResponsableEditDialog').show()" disabled="#{empty responsableController.selected}"/>
+                    <p:commandButton  rendered="#{usuarioController.permisos()}" id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{responsableController.destroy}" update="datalist" disabled="#{empty responsableController.selected}"/>
                 </f:facet>
             </p:dataTable>
         </p:panel>

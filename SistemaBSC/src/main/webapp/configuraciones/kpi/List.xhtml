@@ -53,10 +53,10 @@
                     <h:outputText value="#{item.idObjetivoEstrategico.descripcion}"/>
                 </p:column>
                 <f:facet name="footer">
-                    <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{kpiController.prepareCreate}" update=":KpiCreateForm" oncomplete="PF('KpiCreateDialog').show()"/>
-                    <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":KpiViewForm" oncomplete="PF('KpiViewDialog').show()" disabled="#{empty kpiController.selected}"/>
-                    <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":KpiEditForm" oncomplete="PF('KpiEditDialog').show()" disabled="#{empty kpiController.selected}"/>
-                    <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{kpiController.destroy}" update="datalist" disabled="#{empty kpiController.selected}"/>
+                    <p:commandButton rendered="#{usuarioController.permisos()}" id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{kpiController.prepareCreate}" update=":KpiCreateForm" oncomplete="PF('KpiCreateDialog').show()"/>
+                    <p:commandButton  id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":KpiViewForm" oncomplete="PF('KpiViewDialog').show()" disabled="#{empty kpiController.selected}"/>
+                    <p:commandButton  rendered="#{usuarioController.permisos()}" id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":KpiEditForm" oncomplete="PF('KpiEditDialog').show()" disabled="#{empty kpiController.selected}"/>
+                    <p:commandButton  rendered="#{usuarioController.permisos()}" id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{kpiController.destroy}" update="datalist" disabled="#{empty kpiController.selected}"/>
                 </f:facet>
             </p:dataTable>
         </p:panel>

@@ -78,10 +78,10 @@
                     <h:outputText value="#{item.idObjetivoEstrategico.descripcion}"/>
                 </p:column>
                 <f:facet name="footer">
-                    <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{indicadorController.prepareCreate}" update=":IndicadorCreateForm" oncomplete="PF('IndicadorCreateDialog').show()"/>
+                    <p:commandButton  rendered="#{usuarioController.permisos()}" id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{indicadorController.prepareCreate}" update=":IndicadorCreateForm" oncomplete="PF('IndicadorCreateDialog').show()"/>
                     <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":IndicadorViewForm" oncomplete="PF('IndicadorViewDialog').show()" disabled="#{empty indicadorController.selected}"/>
-                    <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":IndicadorEditForm" oncomplete="PF('IndicadorEditDialog').show()" disabled="#{empty indicadorController.selected}"/>
-                    <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{indicadorController.destroy}" update="datalist" disabled="#{empty indicadorController.selected}"/>
+                    <p:commandButton  rendered="#{usuarioController.permisos()}" id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":IndicadorEditForm" oncomplete="PF('IndicadorEditDialog').show()" disabled="#{empty indicadorController.selected}"/>
+                    <p:commandButton  rendered="#{usuarioController.permisos()}" id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{indicadorController.destroy}" update="datalist" disabled="#{empty indicadorController.selected}"/>
                 </f:facet>
             </p:dataTable>
         </p:panel>
