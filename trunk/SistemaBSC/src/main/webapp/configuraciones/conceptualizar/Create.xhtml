@@ -12,8 +12,6 @@
             <h:form id="ConceptualizarCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{conceptualizarController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateConceptualizarLabel_idConceptualizar}" for="idConceptualizar" />
-                        <p:inputText id="idConceptualizar" value="#{conceptualizarController.selected.idConceptualizar}" title="#{bundle.CreateConceptualizarTitle_idConceptualizar}" required="true" requiredMessage="#{bundle.CreateConceptualizarRequiredMessage_idConceptualizar}"/>
                         <p:outputLabel value="#{bundle.CreateConceptualizarLabel_definir}" for="definir" />
                         <p:inputText id="definir" value="#{conceptualizarController.selected.definir}" title="#{bundle.CreateConceptualizarTitle_definir}" required="true" requiredMessage="#{bundle.CreateConceptualizarRequiredMessage_definir}"/>
                         <p:outputLabel value="#{bundle.CreateConceptualizarLabel_aclarar}" for="aclarar" />

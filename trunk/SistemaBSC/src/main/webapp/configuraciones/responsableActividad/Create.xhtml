@@ -12,8 +12,6 @@
             <h:form id="ResponsableActividadCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{responsableActividadController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateResponsableActividadLabel_responsableActividadPK_idResponsableActividad}" for="responsableActividadPK_idResponsableActividad" />
-                        <p:inputText id="responsableActividadPK_idResponsableActividad" value="#{responsableActividadController.selected.responsableActividadPK.idResponsableActividad}" title="#{bundle.CreateResponsableActividadTitle_responsableActividadPK_idResponsableActividad}" required="true" requiredMessage="#{bundle.CreateResponsableActividadRequiredMessage_responsableActividadPK_idResponsableActividad}"/>
                         
                         <p:outputLabel value="#{bundle.CreateResponsableActividadLabel_actividades}" for="actividades" />
                         <p:selectOneMenu id="actividades" value="#{responsableActividadController.selected.actividades}" required="true" requiredMessage="#{bundle.EditResponsableActividadRequiredMessage_actividades}">

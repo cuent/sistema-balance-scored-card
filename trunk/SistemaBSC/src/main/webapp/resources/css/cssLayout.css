@@ -1,17 +1,17 @@
 
 #top {
     position: relative;
-    background-color: #036fab;
-    color: white;
+    background-color: white;
+    color: blue;
     padding: 5px;
     margin: 0px 0px 10px 0px;
 }
 
 #bottom {
     position: relative;
-    background-color: #c2dfef;
+    background-color: #777;
     padding: 5px;
-    margin: 10px 0px 0px 0px;
+    margin: 0px 0px 0px 350px;
 }
 
 #left {
@@ -37,13 +37,13 @@
 .left_content {
     background-color: #dddddd;
     padding: 5px;
-    margin-left: 170px;
+    margin-left: 350px;
 }
 
 .right_content {
     background-color: #dddddd;
     padding: 5px;
-    margin: 0px 170px 0px 170px;
+    margin: 0px 3500px 0px 530px;
 }
 
 #top a:link, #top a:visited {
@@ -57,5 +57,3 @@
   font-weight : bold;
   text-decoration : underline;
 }
-
-

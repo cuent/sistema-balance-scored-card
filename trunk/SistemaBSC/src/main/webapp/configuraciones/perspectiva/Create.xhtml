@@ -12,8 +12,6 @@
             <h:form id="PerspectivaCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{perspectivaController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreatePerspectivaLabel_idPerspectiva}" for="idPerspectiva" />
-                        <p:inputText id="idPerspectiva" value="#{perspectivaController.selected.idPerspectiva}" title="#{bundle.CreatePerspectivaTitle_idPerspectiva}" required="true" requiredMessage="#{bundle.CreatePerspectivaRequiredMessage_idPerspectiva}"/>
                         <p:outputLabel value="#{bundle.CreatePerspectivaLabel_descripcion}" for="descripcion" />
                         <p:inputText id="descripcion" value="#{perspectivaController.selected.descripcion}" title="#{bundle.CreatePerspectivaTitle_descripcion}" required="true" requiredMessage="#{bundle.CreatePerspectivaRequiredMessage_descripcion}"/>
                         

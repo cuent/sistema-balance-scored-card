@@ -21,12 +21,7 @@
                 <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
                 <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
 
-                <p:column>
-                    <f:facet name="header">
-                        <h:outputText value="#{bundle.ListConceptualizarTitle_idConceptualizar}"/>
-                    </f:facet>
-                    <h:outputText value="#{item.idConceptualizar}"/>
-                </p:column>
+                
                 <p:column>
                     <f:facet name="header">
                         <h:outputText value="#{bundle.ListConceptualizarTitle_definir}"/>

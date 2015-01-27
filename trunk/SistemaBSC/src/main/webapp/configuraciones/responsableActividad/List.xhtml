@@ -22,12 +22,7 @@
                 <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
                 <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
 
-                <p:column>
-                    <f:facet name="header">
-                        <h:outputText value="#{bundle.ListResponsableActividadTitle_responsableActividadPK_idResponsableActividad}"/>
-                    </f:facet>
-                    <h:outputText value="#{item.responsableActividadPK.idResponsableActividad}"/>
-                </p:column>
+               
                 <p:column>
                     <f:facet name="header">
                         <h:outputText value="#{bundle.ListResponsableActividadTitle_fechaModificacion}"/>

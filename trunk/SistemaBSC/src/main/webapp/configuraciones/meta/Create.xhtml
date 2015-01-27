@@ -12,9 +12,7 @@
             <h:form id="MetaCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{metaController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateMetaLabel_idMeta}" for="idMeta" />
-                        <p:inputText id="idMeta" value="#{metaController.selected.idMeta}" title="#{bundle.CreateMetaTitle_idMeta}" required="true" requiredMessage="#{bundle.CreateMetaRequiredMessage_idMeta}"/>
-                        <p:outputLabel value="#{bundle.CreateMetaLabel_descripcion}" for="descripcion" />
+                       <p:outputLabel value="#{bundle.CreateMetaLabel_descripcion}" for="descripcion" />
                         <p:inputText id="descripcion" value="#{metaController.selected.descripcion}" title="#{bundle.CreateMetaTitle_descripcion}" />
               
                         <p:outputLabel value="#{bundle.CreateMetaLabel_idObjetivo}" for="idObjetivo" />

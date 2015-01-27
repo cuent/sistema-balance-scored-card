@@ -12,8 +12,6 @@
             <h:form id="ObjetivoEstrategicoCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{objetivoEstrategicoController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateObjetivoEstrategicoLabel_idObjetivoEstrategico}" for="idObjetivoEstrategico" />
-                        <p:inputText id="idObjetivoEstrategico" value="#{objetivoEstrategicoController.selected.idObjetivoEstrategico}" title="#{bundle.CreateObjetivoEstrategicoTitle_idObjetivoEstrategico}" required="true" requiredMessage="#{bundle.CreateObjetivoEstrategicoRequiredMessage_idObjetivoEstrategico}"/>
                         <p:outputLabel value="#{bundle.CreateObjetivoEstrategicoLabel_descripcion}" for="descripcion" />
                         <p:inputText id="descripcion" value="#{objetivoEstrategicoController.selected.descripcion}" title="#{bundle.CreateObjetivoEstrategicoTitle_descripcion}" />
                         <p:outputLabel value="#{bundle.CreateObjetivoEstrategicoLabel_fechaAlcanze}" for="fechaAlcanze" />
