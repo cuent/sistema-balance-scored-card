@@ -14,7 +14,18 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     
-    <dependencies>         
+    <dependencies>  
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.6</version>
+        </dependency>
+       
+        <dependency>
+            <groupId>us.bryon</groupId>
+            <artifactId>graphviz-maven-plugin</artifactId>
+            <version>1.1</version>
+        </dependency>
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>eclipselink</artifactId>
@@ -31,6 +42,18 @@
             <groupId>org.primefaces</groupId>
             <artifactId>primefaces</artifactId>
             <version>5.1</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>JQ733100</groupId>
+            <artifactId>1</artifactId>
+            <version>1</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>itext</groupId>
+            <artifactId>text</artifactId>
+            <version>1</version>
             <type>jar</type>
         </dependency>
         <dependency>
