@@ -42,10 +42,12 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Indicador.findByValorActual", query = "SELECT i FROM Indicador i WHERE i.valorActual = :valorActual"),
     @NamedQuery(name = "Indicador.findByFechaModificacion", query = "SELECT i FROM Indicador i WHERE i.fechaModificacion = :fechaModificacion"),
     
-    @NamedQuery(name = "Indicador.FechaModificacion", query = "SELECT o.fechaModificacion FROM Indicador o")})
+    @NamedQuery(name = "Indicador.FechaModificacion", query = "SELECT o.fechaModificacion FROM Indicador o"),
+    @NamedQuery(name = "Indicador.findByIdObjetivoEstrategico", query = "SELECT k FROM Indicador k WHERE k.idObjetivoEstrategico.idObjetivoEstrategico = :idObjetivoEstrategico")})
 public class Indicador implements Serializable {
     private static final long serialVersionUID = 1L;
     public static final String FechaModificacion ="Indicador.FechaModificacion";
+    public static final String findByIdObjetivoEstrategico = "Indicador.findByIdObjetivoEstrategico";
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
