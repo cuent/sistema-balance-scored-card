@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      >
+
+
+    <h:form id="ActividadesListForm">
+        <p:panel>
+            <h1 class="close">Actividades</h1><br/>
+            <p:dataTable id="datalist" value="#{actividadesController.items}" var="item"
+                         selectionMode="single" selection="#{actividadesController.selected}"
+                         paginator="true"
+                         rowKey="#{item.idActividades}"
+                         rows="10"
+                         rowsPerPageTemplate="10,20,30,40,50"
+                         >
+
+                <p:column filterBy="#{item.idObjetivoEstrategico.descripcion}">
+                    <f:facet name="header">
+                        <h:outputText value="Objetivo Estrategico"/>
+                    </f:facet>
+                    <h:outputText value="#{item.idObjetivoEstrategico.descripcion}"/>
+                </p:column>
+                <p:column filterBy="#{item.duracion}">
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.ListActividadesTitle_duracion}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.duracion}"/>
+                </p:column>
+                <p:column filterBy="#{item.control}">
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.ListActividadesTitle_control}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.control}"/>
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.ListActividadesTitle_fechaInicio}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.fechaInicio}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.ListActividadesTitle_fechaFin}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.fechaFin}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.ListActividadesTitle_fechaModificacion}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.fechaModificacion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.ListActividadesTitle_idObjetivoEstrategico}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.idObjetivoEstrategico.descripcion}"/>
+                </p:column>
+            </p:dataTable>
+        </p:panel>
+    </h:form>
+
+</html>

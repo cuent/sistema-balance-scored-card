@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    
+            <h:form id="ObjetivoEstrategicoListForm">
+                <p:panel >
+                    <h1 class="close"> Objetivo Estrategico</h1>
+            <br/>
+                    <p:dataTable id="datalist" value="#{objetivoEstrategicoController.items}" var="item"
+                                 selectionMode="single" selection="#{objetivoEstrategicoController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.idObjetivoEstrategico}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:column filterBy="#{item.descripcion}">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListObjetivoEstrategicoTitle_descripcion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descripcion}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListObjetivoEstrategicoTitle_fechaAlcanze}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaAlcanze}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListObjetivoEstrategicoTitle_fechaModificacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaModificacion}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column filterBy="#{item.estrategiaGlobal.nombre}">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListObjetivoEstrategicoTitle_estrategiaGlobal}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.estrategiaGlobal.nombre}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.idPerspectiva.descripcion}">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListObjetivoEstrategicoTitle_idPerspectiva}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idPerspectiva.descripcion}"/>
+                        </p:column>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+</html>

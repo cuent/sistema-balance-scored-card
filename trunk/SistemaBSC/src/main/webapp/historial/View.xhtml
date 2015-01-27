@@ -16,81 +16,169 @@
                             <h:panelGroup id="perspectiva">
                                 <p:panelGrid id="perspectivaGRID" columns="2" >
                                     <h:outputText value="Perspectiva:"/>
-                                    <h:outputText value="CLIENTES" title="Perspectiva"/>
+                                    <h:outputText value="#{historialController.selected.idPerspectiva.descripcion}" title="Perspectiva"/>
                                     <h:outputText value="Modificacion:"/>
-                                    <h:outputText value="FECHA" title="Modificacion"/>
+                                    <h:outputText value="#{historialController.selected.idPerspectiva.fechaModificacion}" title="Modificacion"/>
                                 </p:panelGrid>
                             </h:panelGroup>
                             <h:panelGroup id="objetivo">
                                 <p:panelGrid id="objetivoGRID" columns="2" >
                                     <h:outputText value="Objetivo Estrategico:"/>
-                                    <h:outputText value="-----" title="Objetivo Estrategico"/>
+                                    <h:outputText value="#{historialController.selected.descripcion}" title="Objetivo Estrategico"/>
                                     <h:outputText value="Fecha de Alcance:"/>
-                                    <h:outputText value="-----" title="Fecha de Alcance"/>
+                                    <h:outputText value="#{historialController.selected.fechaAlcanze}" title="Fecha de Alcance"/>
                                 </p:panelGrid>
                             </h:panelGroup>
                             <h:panelGroup id="estrategia">
                                 <p:panelGrid id="estrategiaGRID" columns="2" >
                                     <h:outputText value="Estrategia Global:"/>
-                                    <h:outputText value="-----" title="Estrategia Global"/>
+                                    <h:outputText value="#{historialController.selected.estrategiaGlobal.nombre}" title="Estrategia Global"/>
                                     <h:outputText value="Modificacion:"/>
-                                    <h:outputText value="-----" title="Modificacion"/>
+                                    <h:outputText value="#{historialController.selected.estrategiaGlobal.fechaModificacion}" title="Modificacion"/>
                                 </p:panelGrid>
                             </h:panelGroup>
                         </p:panelGrid>
-                        <p:panelGrid id="bloque2" columns="1" >
-                            <h:panelGroup id="kpi">
-                                <p:panelGrid id="kpiGRID" columns="5" >
-                                    <h:outputText value="KPI:"/>
-                                    <h:outputText value="Descripcion:"/>
-                                    <h:outputText value="Definir:"/>
-                                    <h:outputText value="Aclarar:"/>
-                                    <h:outputText value="Conceptualizar"/>
-                                    <h:outputText value="-----" title="KPI"/>
-                                    <h:outputText value="-----" title="Descripcion"/>
-                                    <h:outputText value="-----" title="Definir"/>
-                                    <h:outputText value="-----" title="Aclarar"/>
-                                    <h:outputText value="-----" title="Conceptualizar"/>
-                                </p:panelGrid>
-                            </h:panelGroup>
+                        <p:panelGrid id="bloque2" columns="2" >
+                            <p:dataTable id="kpidatalist" value="#{historialController.itemsKpi}" var="itemKpi" rowKey="#{itemKpi.descripcion}">
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="KPI"/>
+                                    </f:facet>
+                                    <h:outputText value="#{itemKpi.kpi}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Descripcion"/>
+                                    </f:facet>
+                                    <h:outputText value="#{itemKpi.descripcion}"/>
+                                </p:column>
+                            </p:dataTable>
+                            <p:dataTable id="conceptualizardatalist" value="#{historialController.itemsConceptualizar}" var="itemConceptualizar" rowKey="#{itemConceptualizar.conceptualizar}">
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Definir"/>
+                                    </f:facet>
+                                    <h:outputText value="#{itemConceptualizar.definir}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Aclarar"/>
+                                    </f:facet>
+                                    <h:outputText value="#{itemConceptualizar.aclarar}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Conceptualizar"/>
+                                    </f:facet>
+                                    <h:outputText value="#{itemConceptualizar.conceptualizar}"/>
+                                </p:column>
+                            </p:dataTable>
                         </p:panelGrid>
                         <p:panelGrid id="bloque3" columns="2" >
                             <p:panelGrid id="bloque4" columns="1" >
                                 <h:panelGroup id="meta">
-                                    <p:panelGrid id="metaGRID" columns="2" >
-                                        <h:outputText value="META:"/>
-                                        <h:outputText value="-----" title="META"/>
-                                    </p:panelGrid>
+                                    <p:dataTable id="metadatalist" value="#{historialController.itemsMeta}" var="itemConceptualizar" rowKey="#{itemMeta.descripcion}">
+                                        <p:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="Metas"/>
+                                            </f:facet>
+                                            <h:outputText value="#{itemMeta.descripcion}"/>
+                                        </p:column>
+                                        <p:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="FechaModificacion"/>
+                                            </f:facet>
+                                            <h:outputText value="#{itemMeta.fechaModificacion}"/>
+                                        </p:column>
+                                    </p:dataTable>
                                 </h:panelGroup>
-                                <h:panelGroup id="indicador">
-                                    <p:panelGrid id="indicadorGRID" columns="2" >
-                                        <p:panelGrid id="formula" columns="1" >
-                                            <h:outputText value="Descripcion:"/>
-                                            <h:outputText value="-----" title="META"/>
-                                            <h:outputText value="Formula:"/>
-                                            <h:outputText value="-----" title="META"/>
-                                            <h:outputText value="Valor Actual:"/>
-                                            <h:outputText value="-----" title="META"/>
-                                        </p:panelGrid>
-                                        <p:panelGrid id="rangos" columns="1" >
-                                            <h:outputText value="Minimo:"/>
-                                            <h:outputText value="-----" title="META"/>
-                                            <h:outputText value="Medio:"/>
-                                            <h:outputText value="-----" title="META"/>
-                                            <h:outputText value="Normal:"/>
-                                            <h:outputText value="-----" title="META"/>
-                                        </p:panelGrid>
-                                    </p:panelGrid>
-                                </h:panelGroup>
+                                <p:panelGrid id="indicadorGRID" columns="2" >
+                                    <p:dataScroller value="#{historialController.itemsIndicador}" var="itemIndicador" chunkSize="10">
+                                        <f:facet name="header">
+                                            Indicadores
+                                        </f:facet>
+
+                                        <h:panelGrid columns="3" style="width:100%" columnClasses="detail,semaforo,actual">
+
+                                            <p:outputPanel>
+                                                <h:panelGrid columns="2" cellpadding="5">
+                                                    <h:outputText value="Descripcion:" style="font-weight: bold"/>
+                                                    <h:outputText value="#{itemIndicador.descripcion}" />
+
+                                                    <h:outputText value="Unidades:" style="font-weight: bold"/>
+                                                    <h:outputText value="#{itemIndicador.unidades}" />
+
+                                                    <h:outputText value="Formula:" style="font-weight: bold"/>
+                                                    <h:outputText value="#{itemIndicador.formula}" />
+                                                </h:panelGrid>
+                                            </p:outputPanel>
+                                            <p:outputPanel>
+                                                <h:panelGrid columns="3" cellpadding="5">
+                                                    <h:outputText value="Bajo:" style="font-weight: bold"/>
+                                                    <h:outputText value="menor que: #{itemIndicador.limiteInferior}" />
+                                                    <p:graphicImage name="../resources/image/rojo.gif" value="../resources/image/rojo.gif" width="60" height="60"/> 
+                                                    
+                                                    <h:outputText value="Medio:" style="font-weight: bold"/>
+                                                    <h:outputText value="Entre: #{itemIndicador.limiteInferior} y #{itemIndicador.limiteSuperior}" />
+                                                    <p:graphicImage name="../resources/image/amarillo.gif" value="../resources/image/verde.gif" width="60" height="60"/>
+                                                    
+                                                    <h:outputText value="Alto:" style="font-weight: bold"/>
+                                                    <h:outputText value="mayor que: #{itemIndicador.limiteSuperior}" />
+                                                    <p:graphicImage name="../resources/image/verde.gif" value="../resources/image/verde.gif" width="60" height="60"/> 
+                                                </h:panelGrid>
+                                            </p:outputPanel>
+                                            <p:outputPanel>
+                                                <h:panelGrid columns="1" cellpadding="5">
+                                                    <h:outputText value="Estado Actual" style="font-weight: bold"/>
+                                                    <h:outputText value="#{itemIndicador.valorActual}" />
+                                                    <p:graphicImage name="#{historialController.estadoActual(itemIndicador.limiteInferior, itemIndicador.limiteSuperior,itemIndicador.valorActual)}" width="60" height="60"/> 
+                                                </h:panelGrid>
+                                            </p:outputPanel>
+                                        </h:panelGrid>
+                                    </p:dataScroller>
+                                </p:panelGrid>
                             </p:panelGrid>
                             <p:panelGrid id="bloque5" columns="1" >
-                                <p:dataTable id="datalist" value="#{usuarioController.items}" var="item" rowKey="#{item.idUsuario}">
+                                <p:dataTable id="datalist" value="#{historialController.itemsActividades}" var="item" rowKey="#{itemActividades.control}">
                                     <p:column>
                                         <f:facet name="header">
-                                            <h:outputText value="#{bundle.ListUsuarioTitle_idUsuario}"/>
+                                            <h:outputText value="DURACION"/>
                                         </f:facet>
-                    <h:outputText value="#{item.idUsuario}"/>
-                </p:column>
+                                        <h:outputText value="#{itemActividades.duracion}"/>
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="CONTROL"/>
+                                        </f:facet>
+                                        <h:outputText value="#{itemActividades.control}"/>
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="FECHA INICIO"/>
+                                        </f:facet>
+                                        <h:outputText value="#{itemActividades.fechaInicio}"/>
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="FECHA FINAL"/>
+                                        </f:facet>
+                                        <h:outputText value="#{itemActividades.fechaFin}"/>
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="RESPONSABLES"/>
+                                        </f:facet>
+                                        <p:dataScroller value="#{itemActividades.responsableActividadSet}" var="itemActividadesResposables" chunkSize="10">
+                                            <h:panelGrid columns="2" style="width:100%" columnClasses="detail">
+                                                <h:outputText value="Responsables:" style="font-weight: bold" />
+                                                <p:outputPanel>
+                                                    <h:panelGrid columns="1" cellpadding="5">
+                                                        <h:outputText value="#{itemActividadesResposables.usuario.nombres} #{itemActividadesResposables.usuario.apellidos}"/>
+                                                    </h:panelGrid>
+                                                </p:outputPanel>
+                                            </h:panelGrid>
+                                        </p:dataScroller>
+                                    </p:column>
                                 </p:dataTable>
                             </p:panelGrid>
                         </p:panelGrid>

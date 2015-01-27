@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ObjetivoEstrategicoViewDlg" widgetVar="ObjetivoEstrategicoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewObjetivoEstrategicoTitle}">
+            <h:form id="ObjetivoEstrategicoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid id="bloque0" columns="1" rendered="#{historialController.selected != null}">
+                        <p:panelGrid id="bloque1" columns="3" >
+                            <h:panelGroup id="perspectiva">
+                                <p:panelGrid id="perspectivaGRID" columns="2" >
+                                    <h:outputText value="Perspectiva:"/>
+                                    <h:outputText value="#{historialController.selected.idPerspectiva.descripcion}" title="Perspectiva"/>
+                                    <h:outputText value="Modificacion:"/>
+                                    <h:outputText value="#{historialController.selected.idPerspectiva.fechaModificacion}" title="Modificacion"/>
+                                </p:panelGrid>
+                            </h:panelGroup>
+                            <h:panelGroup id="objetivo">
+                                <p:panelGrid id="objetivoGRID" columns="2" >
+                                    <h:outputText value="Objetivo Estrategico:"/>
+                                    <h:outputText value="-----" title="Objetivo Estrategico"/>
+                                    <h:outputText value="Fecha de Alcance:"/>
+                                    <h:outputText value="-----" title="Fecha de Alcance"/>
+                                </p:panelGrid>
+                            </h:panelGroup>
+                            <h:panelGroup id="estrategia">
+                                <p:panelGrid id="estrategiaGRID" columns="2" >
+                                    <h:outputText value="Estrategia Global:"/>
+                                    <h:outputText value="-----" title="Estrategia Global"/>
+                                    <h:outputText value="Modificacion:"/>
+                                    <h:outputText value="-----" title="Modificacion"/>
+                                </p:panelGrid>
+                            </h:panelGroup>
+                        </p:panelGrid>
+                        <p:panelGrid id="bloque2" columns="2" >
+                                 <p:dataTable id="kpidatalist" value="#{usuarioController.items}" var="item" rowKey="#{item.idUsuario}">
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="KPI"/>
+                                        </f:facet>
+                                        <h:outputText value="-----"/>
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Descripcion"/>
+                                        </f:facet>
+                                        <h:outputText value="-----"/>
+                                    </p:column>
+                                </p:dataTable>
+                                <p:dataTable id="conceptualizardatalist" value="#{usuarioController.items}" var="item" rowKey="#{item.idUsuario}">
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Definir"/>
+                                        </f:facet>
+                                        <h:outputText value="-----"/>
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Aclarar"/>
+                                        </f:facet>
+                                        <h:outputText value="-----"/>
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Conceptualizar"/>
+                                        </f:facet>
+                                        <h:outputText value="-----"/>
+                                    </p:column>
+                                </p:dataTable>
+                        </p:panelGrid>
+                        <p:panelGrid id="bloque3" columns="2" >
+                            <p:panelGrid id="bloque4" columns="1" >
+                                <h:panelGroup id="meta">
+                                    <p:panelGrid id="metaGRID" columns="2" >
+                                        <h:outputText value="META:"/>
+                                        <h:outputText value="-----" title="META"/>
+                                    </p:panelGrid>
+                                </h:panelGroup>
+                                <h:panelGroup id="indicador">
+                                    <p:panelGrid id="indicadorGRID" columns="2" >
+                                        <p:panelGrid id="formula" columns="1" >
+                                            <h:outputText value="Descripcion:"/>
+                                            <h:outputText value="-----" title="META"/>
+                                            <h:outputText value="Formula:"/>
+                                            <h:outputText value="-----" title="META"/>
+                                            <h:outputText value="Valor Actual:"/>
+                                            <h:outputText value="-----" title="META"/>
+                                        </p:panelGrid>
+                                        <p:panelGrid id="rangos" columns="1" >
+                                            <h:outputText value="Minimo:"/>
+                                            <h:outputText value="-----" title="META"/>
+                                            <h:outputText value="Medio:"/>
+                                            <h:outputText value="-----" title="META"/>
+                                            <h:outputText value="Normal:"/>
+                                            <h:outputText value="-----" title="META"/>
+                                        </p:panelGrid>
+                                    </p:panelGrid>
+                                </h:panelGroup>
+                            </p:panelGrid>
+                            <p:panelGrid id="bloque5" columns="1" >
+                                <p:dataTable id="datalist" value="#{usuarioController.items}" var="item" rowKey="#{item.idUsuario}">
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="DURACION"/>
+                                        </f:facet>
+                                        <h:outputText value="-----"/>
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="CONTROL"/>
+                                        </f:facet>
+                                        <h:outputText value="-----"/>
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="FECHA INICIO"/>
+                                        </f:facet>
+                                        <h:outputText value="-----"/>
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="FECHA FINAL"/>
+                                        </f:facet>
+                                        <h:outputText value="-----"/>
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="RESPONSABLE"/>
+                                        </f:facet>
+                                        <h:outputText value="-----"/>
+                                    </p:column>
+                                </p:dataTable>
+                            </p:panelGrid>
+                        </p:panelGrid>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ObjetivoEstrategicoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
