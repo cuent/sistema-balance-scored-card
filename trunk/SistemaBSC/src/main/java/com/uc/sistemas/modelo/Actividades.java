@@ -7,6 +7,7 @@ package com.uc.sistemas.modelo;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -44,10 +45,12 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Actividades.findByFechaFin", query = "SELECT a FROM Actividades a WHERE a.fechaFin = :fechaFin"),
     @NamedQuery(name = "Actividades.findByFechaModificacion", query = "SELECT a FROM Actividades a WHERE a.fechaModificacion = :fechaModificacion"),
     
-    @NamedQuery(name = "Actividades.FechaModificacion", query = "SELECT o.fechaModificacion FROM Actividades o")})
+    @NamedQuery(name = "Actividades.FechaModificacion", query = "SELECT o.fechaModificacion FROM Actividades o"),
+    @NamedQuery(name = "Actividades.findByIdObjetivoEstrategico", query = "SELECT k FROM Actividades k WHERE k.idObjetivoEstrategico.idObjetivoEstrategico = :idObjetivoEstrategico")})
 public class Actividades implements Serializable {
     private static final long serialVersionUID = 1L;
     public static final String FechaModificacion ="Actividades.FechaModificacion";
+    public static final String findByIdObjetivoEstrategico = "Actividades.findByIdObjetivoEstrategico";
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
@@ -76,7 +79,7 @@ public class Actividades implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaModificacion;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "actividades")
-    private Set<ResponsableActividad> responsableActividadSet;
+    private List<ResponsableActividad> responsableActividadSet;
     @JoinColumn(name = "ID_OBJETIVO_ESTRATEGICO", referencedColumnName = "ID_OBJETIVO_ESTRATEGICO", nullable = false)
     @ManyToOne(optional = false)
     private ObjetivoEstrategico idObjetivoEstrategico;
@@ -145,11 +148,11 @@ public class Actividades implements Serializable {
     }
 
     @XmlTransient
-    public Set<ResponsableActividad> getResponsableActividadSet() {
+    public List<ResponsableActividad> getResponsableActividadSet() {
         return responsableActividadSet;
     }
 
-    public void setResponsableActividadSet(Set<ResponsableActividad> responsableActividadSet) {
+    public void setResponsableActividadSet(List<ResponsableActividad> responsableActividadSet) {
         this.responsableActividadSet = responsableActividadSet;
     }
 

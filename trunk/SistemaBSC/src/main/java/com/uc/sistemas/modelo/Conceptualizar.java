@@ -42,11 +42,13 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Conceptualizar.findByConceptualizar", query = "SELECT c FROM Conceptualizar c WHERE c.conceptualizar = :conceptualizar"),
     @NamedQuery(name = "Conceptualizar.findByFechaModificacion", query = "SELECT c FROM Conceptualizar c WHERE c.fechaModificacion = :fechaModificacion"),
 
-    @NamedQuery(name = "Conceptualizar.FechaModificacion", query = "SELECT o.fechaModificacion FROM Conceptualizar o")})
+    @NamedQuery(name = "Conceptualizar.FechaModificacion", query = "SELECT o.fechaModificacion FROM Conceptualizar o"),
+    @NamedQuery(name = "Conceptualizar.findByIdObjetivoEstrategico", query = "SELECT k FROM Conceptualizar k WHERE k.idObjetivoEstrategico.idObjetivoEstrategico = :idObjetivoEstrategico")})
 public class Conceptualizar implements Serializable {
 
     private static final long serialVersionUID = 1L;
     public static final String FechaModificacion = "Conceptualizar.FechaModificacion";
+    public static final String findByIdObjetivoEstrategico = "Conceptualizar.findByIdObjetivoEstrategico";
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
