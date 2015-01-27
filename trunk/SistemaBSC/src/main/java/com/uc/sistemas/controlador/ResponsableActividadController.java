@@ -32,6 +32,13 @@ public class ResponsableActividadController extends AbstractController<Responsab
         super.create(); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
+    public void update() {
+        Date d = new Date();
+        this.getSelected().setFechaModificacion(d);
+        super.update(); //To change body of generated methods, choose Tools | Templates.
+    }
+
     
     
     protected void setEmbeddableKeys() {

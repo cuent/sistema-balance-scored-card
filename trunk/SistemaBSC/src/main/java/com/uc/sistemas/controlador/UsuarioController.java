@@ -55,6 +55,15 @@ public class UsuarioController extends AbstractController<Usuario> implements Se
     }
 
     @Override
+    public void update() {
+        Date d = new Date();
+        this.getSelected().setFechaModificacion(d);
+        super.update(); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
+    
+    @Override
     public void destroy() {
         System.out.println("esta aki");
         if(!Objects.equals(ConnectUsuario.getUsuario().getIdUsuario(), this.getSelected().getIdUsuario())){
@@ -77,10 +86,11 @@ public class UsuarioController extends AbstractController<Usuario> implements Se
             }
         }
     }
+    
     public boolean permisos(){
         if(ConnectUsuario.getTipoUsuario()=='A'){
          return true;
-        }
+        }else
         return false;
         
     }

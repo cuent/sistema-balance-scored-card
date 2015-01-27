@@ -55,7 +55,7 @@
                         </p:menu>
 
                         <p:menu toggleable="true" style="width:300px">                            
-                            <p:submenu label="Gestión" rendered="#{usuarioController.permisos}">
+                            <p:submenu label="Gestión">
 
                                 <p:menuitem value="Actividades" url="http://localhost:8080/SistemaBSC/faces/configuraciones/actividades/Inicio.xhtml" />
                                 <p:menuitem value="Conceptualizar" url="http://localhost:8080/SistemaBSC/faces/configuraciones/conceptualizar/Inicio.xhtml" />
@@ -70,9 +70,9 @@
                                 <p:menuitem value="Usuario" url="http://localhost:8080/SistemaBSC/faces/configuraciones/usuario/Inicio.xhtml" />
                             </p:submenu>
                             <p:submenu label="Consultas">
-                                <p:menuitem value="Estrategias Globales" url="configuraciones/estrategiaGlobal/Inicio.xhtml" />
-                                <p:menuitem value="Objetivos Estrategicos" url="configuraciones/estrategiaGlobal/Inicio.xhtml" />
-                                <p:menuitem value="Actividades" url="configuraciones/estrategiaGlobal/Inicio.xhtml" />
+                                <p:menuitem value="Estrategias Globales" url="http://localhost:8080/SistemaBSC/faces/configuraciones/estrategiaGlobal/Inicio.xhtml" />
+                                <p:menuitem value="Objetivos Estrategicos" url="http://localhost:8080/SistemaBSC/faces/configuraciones/estrategiaGlobal/Inicio.xhtml" />
+                                <p:menuitem value="Actividades" url="http://localhost:8080/SistemaBSC/faces/configuraciones/estrategiaGlobal/Inicio.xhtml" />
                                 <p:menuitem value="Mapa estratégico organizacional" actionListener="#{menuView.save}" />
                             </p:submenu>
                             <p:submenu label="Consulta Indicadores">
@@ -86,6 +86,11 @@
                             </p:submenu>
                             <p:submenu label="Cuadro de Mando Integral">
                                 <p:menuitem value="Matriz General" url="http://localhost:8080/SistemaBSC/faces/historial/Inicio.xhtml" />
+                            </p:submenu>
+                            <p:submenu label="Informes">
+                                <p:menuitem value="1" actionListener="#{menuView.save}" />
+                                <p:menuitem value="2" actionListener="#{menuView.save}" />
+                                <p:menuitem value="3" actionListener="#{menuView.save}" />
                             </p:submenu>
                         </p:menu>
                     </h:form>

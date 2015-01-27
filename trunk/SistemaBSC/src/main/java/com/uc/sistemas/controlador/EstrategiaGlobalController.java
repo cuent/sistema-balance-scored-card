@@ -41,6 +41,15 @@ public class EstrategiaGlobalController extends AbstractController<EstrategiaGlo
     }
 
     @Override
+    public void update() {
+        Date d = new Date();
+        this.getSelected().setFechaModificacion(d);
+        super.update(); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
+    
+    @Override
     protected void setEmbeddableKeys() {
     }
 

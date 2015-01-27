@@ -18,21 +18,24 @@
                         <p:inputText id="descripcion" value="#{objetivoEstrategicoController.selected.descripcion}" title="#{bundle.EditObjetivoEstrategicoTitle_descripcion}" />
                         <p:outputLabel value="#{bundle.EditObjetivoEstrategicoLabel_fechaAlcanze}" for="fechaAlcanze" />
                         <p:calendar id="fechaAlcanze" pattern="MM/dd/yyyy HH:mm:ss" value="#{objetivoEstrategicoController.selected.fechaAlcanze}" title="#{bundle.EditObjetivoEstrategicoTitle_fechaAlcanze}"  showOn="button"/>
-                        <p:outputLabel value="#{bundle.EditObjetivoEstrategicoLabel_fechaModificacion}" for="fechaModificacion" />
-                        <p:calendar id="fechaModificacion" pattern="MM/dd/yyyy HH:mm:ss" value="#{objetivoEstrategicoController.selected.fechaModificacion}" title="#{bundle.EditObjetivoEstrategicoTitle_fechaModificacion}" required="true" requiredMessage="#{bundle.EditObjetivoEstrategicoRequiredMessage_fechaModificacion}" showOn="button"/>
+                       
                         <p:outputLabel value="#{bundle.EditObjetivoEstrategicoLabel_estrategiaGlobal}" for="estrategiaGlobal" />
                         <p:selectOneMenu id="estrategiaGlobal" value="#{objetivoEstrategicoController.selected.estrategiaGlobal}" required="true" requiredMessage="#{bundle.EditObjetivoEstrategicoRequiredMessage_estrategiaGlobal}">
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{estrategiaGlobalController.itemsAvailableSelectOne}"
                                            var="estrategiaGlobalItem"
-                                           itemValue="#{estrategiaGlobalItem}"/>
+                                           itemValue="#{estrategiaGlobalItem}"
+                                           itemLabel="#{estrategiaGlobalItem.nombre}"/>
+                            <f:converter binding="#{estrategiaGlobalConverter}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.EditObjetivoEstrategicoLabel_idPerspectiva}" for="idPerspectiva" />
                         <p:selectOneMenu id="idPerspectiva" value="#{objetivoEstrategicoController.selected.idPerspectiva}" required="true" requiredMessage="#{bundle.EditObjetivoEstrategicoRequiredMessage_idPerspectiva}">
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{perspectivaController.itemsAvailableSelectOne}"
                                            var="idPerspectivaItem"
-                                           itemValue="#{idPerspectivaItem}"/>
+                                            itemValue="#{idPerspectivaItem}"
+                                           itemLabel="#{idPerspectivaItem.descripcion}"/>
+                            <f:converter binding="#{perspectivaConverter}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{objetivoEstrategicoController.update}" value="#{bundle.Save}" update="display,:ObjetivoEstrategicoListForm:datalist" oncomplete="handleSubmit(args, 'ObjetivoEstrategicoEditDialog');"/>

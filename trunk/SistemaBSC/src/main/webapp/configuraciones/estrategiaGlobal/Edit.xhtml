@@ -14,8 +14,7 @@
                     <p:panelGrid columns="2" rendered="#{estrategiaGlobalController.selected != null}">
                         <p:outputLabel value="#{bundle.EditEstrategiaGlobalLabel_nombre}" for="nombre" />
                         <p:inputText id="nombre" value="#{estrategiaGlobalController.selected.nombre}" title="#{bundle.EditEstrategiaGlobalTitle_nombre}" required="true" requiredMessage="#{bundle.EditEstrategiaGlobalRequiredMessage_nombre}"/>
-                        <p:outputLabel value="#{bundle.EditEstrategiaGlobalLabel_fechaModificacion}" for="fechaModificacion" />
-                        <p:calendar id="fechaModificacion" pattern="MM/dd/yyyy HH:mm:ss" value="#{estrategiaGlobalController.selected.fechaModificacion}" title="#{bundle.EditEstrategiaGlobalTitle_fechaModificacion}" required="true" requiredMessage="#{bundle.EditEstrategiaGlobalRequiredMessage_fechaModificacion}" showOn="button"/>
+                       
                     </p:panelGrid>
                     <p:commandButton actionListener="#{estrategiaGlobalController.update}" value="#{bundle.Save}" update="display,:EstrategiaGlobalListForm:datalist" oncomplete="handleSubmit(args, 'EstrategiaGlobalEditDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="EstrategiaGlobalEditDialog.hide()"/>

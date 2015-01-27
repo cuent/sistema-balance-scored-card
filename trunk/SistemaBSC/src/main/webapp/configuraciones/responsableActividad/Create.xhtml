@@ -19,13 +19,17 @@
                         <p:selectOneMenu id="actividades" value="#{responsableActividadController.selected.actividades}" required="true" requiredMessage="#{bundle.EditResponsableActividadRequiredMessage_actividades}">
                             <f:selectItems value="#{actividadesController.itemsAvailableSelectOne}"
                                            var="actividadesItem"
-                                           itemValue="#{actividadesItem}"/>
+                                           itemValue="#{actividadesItem}"
+                                           itemLabel="#{actividadesItem.control}"/>
+                            <f:converter binding="#{actividadesConverter}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreateResponsableActividadLabel_usuario}" for="usuario" />
                         <p:selectOneMenu id="usuario" value="#{responsableActividadController.selected.usuario}" required="true" requiredMessage="#{bundle.EditResponsableActividadRequiredMessage_usuario}">
                             <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"
                                            var="usuarioItem"
-                                           itemValue="#{usuarioItem}"/>
+                                           itemValue="#{usuarioItem}"
+                                           itemLabel="#{usuarioItem.username}"/>
+                            <f:converter binding="#{usuarioConverter}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{responsableActividadController.create}" value="#{bundle.Save}" update="display,:ResponsableActividadListForm:datalist" oncomplete="handleSubmit(args,'ResponsableActividadCreateDialog');"/>
