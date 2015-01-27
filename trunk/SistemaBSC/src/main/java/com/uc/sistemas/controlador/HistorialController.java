@@ -6,6 +6,11 @@
 package com.uc.sistemas.controlador;
 
 import com.uc.sistemas.controlador.util.Historial;
+import com.uc.sistemas.modelo.Actividades;
+import com.uc.sistemas.modelo.Conceptualizar;
+import com.uc.sistemas.modelo.Indicador;
+import com.uc.sistemas.modelo.Kpi;
+import com.uc.sistemas.modelo.Meta;
 import com.uc.sistemas.modelo.ObjetivoEstrategico;
 import com.uc.sistemas.modelo.Usuario;
 import com.uc.sistemas.security.ConnectUsuario;
@@ -18,6 +23,7 @@ import java.util.Set;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.event.ActionEvent;
 import javax.inject.Named;
 
 /**
@@ -50,6 +56,11 @@ public class HistorialController extends AbstractController<ObjetivoEstrategico>
 
     private List<Historial> fechas;
     private Historial fechaSeleccionada;
+    private List<Kpi> itemsKpi;
+    private List<Conceptualizar> itemsConceptualizar;
+    private List<Meta> itemsMeta;
+    private List<Indicador> itemsIndicador;
+    private List<Actividades> itemsActividades;
 
     public HistorialController() {
         super(ObjetivoEstrategico.class);
@@ -62,6 +73,11 @@ public class HistorialController extends AbstractController<ObjetivoEstrategico>
         setFechaSeleccionada(new Historial());
         setFechas(new ArrayList<Historial>());
         fechaModificaciones();
+        itemsKpi = new ArrayList<>();
+        itemsConceptualizar = new ArrayList<>();
+        itemsMeta = new ArrayList<>();
+        itemsIndicador = new ArrayList<>();
+        itemsActividades = new ArrayList<>();
     }
 
     public void fechaModificaciones() {
@@ -76,14 +92,39 @@ public class HistorialController extends AbstractController<ObjetivoEstrategico>
 //        getFechas().addAll(ejbResponsableFacade.getItemsFechaModificacion());
     }
 
-    public void buscar() {
+    public void buscar(ActionEvent event) {
         System.out.println("Sip");
-        if (fechaSeleccionada != null && fechaSeleccionada.getFechaModificacion() != null) {
-            if (fechaSeleccionada.getClase().equals(ObjetivoEstrategico.class.getSimpleName())) {
-                System.out.println("mirad: " + fechaSeleccionada.getId());
-                this.setSelected(ejbFacade.find(fechaSeleccionada.getId()));
+//        if (fechaSeleccionada != null && fechaSeleccionada.getFechaModificacion() != null) {
+//            if (fechaSeleccionada.getClase().equals(ObjetivoEstrategico.class.getSimpleName())) {
+//                System.out.println("mirad: " + fechaSeleccionada.getId());
+//                this.setSelected(ejbFacade.find(fechaSeleccionada.getId()));
+//            }
+//        }
+
+        itemsKpi = ejbKpiFacade.getItemsObjetivoEstrategico(this.getSelected().getIdObjetivoEstrategico());
+        itemsConceptualizar = ejbConceptualizarFacade.getItemsObjetivoEstrategico(this.getSelected().getIdObjetivoEstrategico());
+        itemsMeta = ejbMetaFacade.getItemsObjetivoEstrategico(this.getSelected().getIdObjetivoEstrategico());
+        itemsIndicador = ejbIndicadorFacade.getItemsObjetivoEstrategico(this.getSelected().getIdObjetivoEstrategico());
+        itemsActividades = ejbActividadesFacade.getItemsObjetivoEstrategico(this.getSelected().getIdObjetivoEstrategico());
+    }
+
+    public String estadoActual(Object li, Object ls, Object act) {
+        if (li != null && ls != null && act != null) {
+            int inferior = Integer.parseInt(li.toString());
+            int superior = Integer.parseInt(ls.toString());
+            int actual = Integer.parseInt(act.toString());
+            System.out.println("sipER"+ inferior + " "+superior+" "+ actual);
+            if (actual < inferior) {
+                return "../resources/image/rojo.gif";
+            } else {
+                if (actual > superior) {
+                    return "../resources/image/verde.gif";
+                } else {
+                    return "../resources/image/amarillo.gif";
+                }
             }
         }
+        return "../resources/image/rojo.gif";
     }
 
     /**
@@ -112,6 +153,76 @@ public class HistorialController extends AbstractController<ObjetivoEstrategico>
      */
     public void setFechaSeleccionada(Historial fechaSeleccionada) {
         this.fechaSeleccionada = fechaSeleccionada;
+    }
+
+    /**
+     * @return the itemsKpi
+     */
+    public List<Kpi> getItemsKpi() {
+        return itemsKpi;
+    }
+
+    /**
+     * @param itemsKpi the itemsKpi to set
+     */
+    public void setItemsKpi(List<Kpi> itemsKpi) {
+        this.itemsKpi = itemsKpi;
+    }
+
+    /**
+     * @return the itemsConceptualizar
+     */
+    public List<Conceptualizar> getItemsConceptualizar() {
+        return itemsConceptualizar;
+    }
+
+    /**
+     * @param itemsConceptualizar the itemsConceptualizar to set
+     */
+    public void setItemsConceptualizar(List<Conceptualizar> itemsConceptualizar) {
+        this.itemsConceptualizar = itemsConceptualizar;
+    }
+
+    /**
+     * @return the itemsMeta
+     */
+    public List<Meta> getItemsMeta() {
+        return itemsMeta;
+    }
+
+    /**
+     * @param itemsMeta the itemsMeta to set
+     */
+    public void setItemsMeta(List<Meta> itemsMeta) {
+        this.itemsMeta = itemsMeta;
+    }
+
+    /**
+     * @return the itemsIndicador
+     */
+    public List<Indicador> getItemsIndicador() {
+        return itemsIndicador;
+    }
+
+    /**
+     * @param itemsIndicador the itemsIndicador to set
+     */
+    public void setItemsIndicador(List<Indicador> itemsIndicador) {
+        this.itemsIndicador = itemsIndicador;
+    }
+
+    /**
+     * @return the itemsActividades
+     */
+    public List<Actividades> getItemsActividades() {
+        return itemsActividades;
+    }
+
+    /**
+     * @param itemsActividades the itemsActividades to set
+     */
+    public void setItemsActividades(List<Actividades> itemsActividades) {
+        this.itemsActividades = itemsActividades;
     }
 
 }
