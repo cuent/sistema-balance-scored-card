@@ -44,4 +44,9 @@ public class IndicadorFacade extends AbstractFacade<Indicador> {
         return historial;
 
     }
+    public List<Indicador> getItemsObjetivoEstrategico(Integer idObjetivoEstrategico) {
+        Query query = this.em.createNamedQuery(Indicador.findByIdObjetivoEstrategico);
+        query.setParameter("idObjetivoEstrategico", idObjetivoEstrategico);
+            return query.getResultList();
+    }
 }

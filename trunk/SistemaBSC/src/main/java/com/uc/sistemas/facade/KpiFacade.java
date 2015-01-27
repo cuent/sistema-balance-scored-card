@@ -44,4 +44,9 @@ public class KpiFacade extends AbstractFacade<Kpi> {
         return historial;
 
     }
+    public List<Kpi> getItemsObjetivoEstrategico(Integer idObjetivoEstrategico) {
+        Query query = this.em.createNamedQuery(Kpi.findByIdObjetivoEstrategico);
+        query.setParameter("idObjetivoEstrategico", idObjetivoEstrategico);
+            return query.getResultList();
+    }
 }

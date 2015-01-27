@@ -44,4 +44,9 @@ public class ActividadesFacade extends AbstractFacade<Actividades> {
         return historial;
 
     }
+    public List<Actividades> getItemsObjetivoEstrategico(Integer idObjetivoEstrategico) {
+        Query query = this.em.createNamedQuery(Actividades.findByIdObjetivoEstrategico);
+        query.setParameter("idObjetivoEstrategico", idObjetivoEstrategico);
+            return query.getResultList();
+    }
 }

@@ -43,4 +43,9 @@ public class ConceptualizarFacade extends AbstractFacade<Conceptualizar> {
         }
         return historial;
     }
+    public List<Conceptualizar> getItemsObjetivoEstrategico(Integer idObjetivoEstrategico) {
+        Query query = this.em.createNamedQuery(Conceptualizar.findByIdObjetivoEstrategico);
+        query.setParameter("idObjetivoEstrategico", idObjetivoEstrategico);
+            return query.getResultList();
+    }
 }
