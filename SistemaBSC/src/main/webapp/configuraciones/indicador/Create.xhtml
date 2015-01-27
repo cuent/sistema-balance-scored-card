@@ -12,8 +12,6 @@
             <h:form id="IndicadorCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{indicadorController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateIndicadorLabel_idIndicador}" for="idIndicador" />
-                        <p:inputText id="idIndicador" value="#{indicadorController.selected.idIndicador}" title="#{bundle.CreateIndicadorTitle_idIndicador}" required="true" requiredMessage="#{bundle.CreateIndicadorRequiredMessage_idIndicador}"/>
                         <p:outputLabel value="#{bundle.CreateIndicadorLabel_descripcion}" for="descripcion" />
                         <p:inputText id="descripcion" value="#{indicadorController.selected.descripcion}" title="#{bundle.CreateIndicadorTitle_descripcion}" />
                         <p:outputLabel value="#{bundle.CreateIndicadorLabel_limiteInferior}" for="limiteInferior" />

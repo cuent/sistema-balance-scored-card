@@ -12,8 +12,6 @@
             <h:form id="ResponsableCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{responsableController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateResponsableLabel_responsablePK_idResponsable}" for="responsablePK_idResponsable" />
-                        <p:inputText id="responsablePK_idResponsable" value="#{responsableController.selected.responsablePK.idResponsable}" title="#{bundle.CreateResponsableTitle_responsablePK_idResponsable}" required="true" requiredMessage="#{bundle.CreateResponsableRequiredMessage_responsablePK_idResponsable}"/>
 
                         <p:outputLabel value="#{bundle.CreateResponsableLabel_objetivoEstrategico}" for="objetivoEstrategico" />
                         <p:selectOneMenu id="objetivoEstrategico" value="#{responsableController.selected.objetivoEstrategico}" required="true" requiredMessage="#{bundle.EditResponsableRequiredMessage_objetivoEstrategico}">
