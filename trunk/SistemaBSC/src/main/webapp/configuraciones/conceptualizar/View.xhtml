@@ -25,7 +25,7 @@
                             <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                         </h:outputText>
                         <h:outputText value="#{bundle.ViewConceptualizarLabel_idObjetivoEstrategico}"/>
-                        <h:outputText value="#{conceptualizarController.selected.idObjetivoEstrategico}" title="#{bundle.ViewConceptualizarTitle_idObjetivoEstrategico}"/>
+                        <h:outputText value="#{conceptualizarController.selected.idObjetivoEstrategico.descripcion}" title="#{bundle.ViewConceptualizarTitle_idObjetivoEstrategico}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="ConceptualizarViewDialog.hide()"/>
                 </h:panelGroup>

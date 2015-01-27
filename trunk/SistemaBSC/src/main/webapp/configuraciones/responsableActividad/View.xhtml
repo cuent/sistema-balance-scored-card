@@ -19,9 +19,9 @@
                             <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                         </h:outputText>
                         <h:outputText value="#{bundle.ViewResponsableActividadLabel_actividades}"/>
-                        <h:outputText value="#{responsableActividadController.selected.actividades}" title="#{bundle.ViewResponsableActividadTitle_actividades}"/>
+                        <h:outputText value="#{responsableActividadController.selected.actividades.control}" title="#{bundle.ViewResponsableActividadTitle_actividades}"/>
                         <h:outputText value="#{bundle.ViewResponsableActividadLabel_usuario}"/>
-                        <h:outputText value="#{responsableActividadController.selected.usuario}" title="#{bundle.ViewResponsableActividadTitle_usuario}"/>
+                        <h:outputText value="#{responsableActividadController.selected.usuario.username}" title="#{bundle.ViewResponsableActividadTitle_usuario}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="ResponsableActividadViewDialog.hide()"/>
                 </h:panelGroup>

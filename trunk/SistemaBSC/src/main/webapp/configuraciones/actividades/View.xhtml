@@ -31,7 +31,7 @@
                             <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                         </h:outputText>
                         <h:outputText value="#{bundle.ViewActividadesLabel_idObjetivoEstrategico}"/>
-                        <h:outputText value="#{actividadesController.selected.idObjetivoEstrategico}" title="#{bundle.ViewActividadesTitle_idObjetivoEstrategico}"/>
+                        <h:outputText value="#{actividadesController.selected.idObjetivoEstrategico.descripcion}" title="#{bundle.ViewActividadesTitle_idObjetivoEstrategico}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="ActividadesViewDialog.hide()"/>
                 </h:panelGroup>

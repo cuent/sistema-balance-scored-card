@@ -23,7 +23,7 @@
                             <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                         </h:outputText>
                         <h:outputText value="#{bundle.ViewKpiLabel_idObjetivoEstrategico}"/>
-                        <h:outputText value="#{kpiController.selected.idObjetivoEstrategico}" title="#{bundle.ViewKpiTitle_idObjetivoEstrategico}"/>
+                        <h:outputText value="#{kpiController.selected.idObjetivoEstrategico.descripcion}" title="#{bundle.ViewKpiTitle_idObjetivoEstrategico}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="KpiViewDialog.hide()"/>
                 </h:panelGroup>

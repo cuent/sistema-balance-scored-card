@@ -21,7 +21,7 @@
                             <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                         </h:outputText>
                         <h:outputText value="#{bundle.ViewMetaLabel_idObjetivo}"/>
-                        <h:outputText value="#{metaController.selected.idObjetivo}" title="#{bundle.ViewMetaTitle_idObjetivo}"/>
+                        <h:outputText value="#{metaController.selected.idObjetivo.descripcion}" title="#{bundle.ViewMetaTitle_idObjetivo}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="MetaViewDialog.hide()"/>
                 </h:panelGroup>
