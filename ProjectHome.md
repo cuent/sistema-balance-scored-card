@@ -1,0 +1,1 @@
+Herramienta para toma de desiciones con información integral.
